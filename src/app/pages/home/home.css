@@ -162,3 +162,353 @@
   }
 
 }
+
+/* ========================================
+   HERO TECHNOLOGY ORBIT
+======================================== */
+
+.hero-orbit-area {
+  position: relative;
+}
+
+
+/* ========================================
+   ORBIT PATHS
+======================================== */
+
+.hero-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 590px;
+  height: 300px;
+  border: 1.5px solid rgba(240, 125, 54, 0.38);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-18deg);
+  pointer-events: none;
+}
+
+.hero-orbit-1 {
+  animation: orbit-rotate-1 14s linear infinite;
+}
+
+.hero-orbit-2 {
+  width: 570px;
+  height: 250px;
+  transform: translate(-50%, -50%) rotate(25deg);
+  border-color: rgba(240, 125, 54, 0.22);
+  animation: orbit-rotate-2 18s linear infinite reverse;
+}
+
+
+/* ========================================
+   ORBIT DOTS
+======================================== */
+
+.orbit-dot {
+  position: absolute;
+  z-index: 8;
+  width: 13px;
+  height: 13px;
+  border-radius: 9999px;
+  background: #f07d36;
+  box-shadow:
+    0 0 8px rgba(240, 125, 54, 0.45),
+    0 0 18px rgba(240, 125, 54, 0.25);
+  animation: dot-float 3s ease-in-out infinite;
+}
+
+.orbit-dot-1 {
+  left: 8%;
+  top: 30%;
+}
+
+.orbit-dot-2 {
+  right: 4%;
+  top: 34%;
+  animation-delay: 0.8s;
+}
+
+.orbit-dot-3 {
+  left: 39%;
+  bottom: 1%;
+  animation-delay: 1.5s;
+}
+
+.orbit-dot-4 {
+  right: 35%;
+  top: 9%;
+  animation-delay: 2.1s;
+}
+
+
+/* ========================================
+   TECHNOLOGY LOGOS
+======================================== */
+
+.tech-logo {
+  z-index: 30;
+
+  display: grid;
+  place-items: center;
+
+  width: 82px;
+  height: 82px;
+
+  padding: 17px;
+
+  border-radius: 24px;
+
+  background: rgba(239, 242, 246, 0.92);
+
+  box-shadow:
+    10px 10px 22px #c5c9d0,
+    -10px -10px 22px #ffffff;
+
+  backdrop-filter: blur(12px);
+
+  animation:
+    tech-float 4.5s ease-in-out infinite;
+
+  will-change: transform;
+}
+
+.tech-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* ========================================
+   DIFFERENT FLOATING SPEEDS
+======================================== */
+
+.tech-angular {
+  animation-delay: 0s;
+}
+
+.tech-laravel {
+  animation-delay: 0.8s;
+}
+
+.tech-tailwind {
+  animation-delay: 1.4s;
+}
+
+.tech-mysql {
+  animation-delay: 2s;
+}
+
+.tech-php {
+  animation-delay: 2.7s;
+}
+
+.tech-database {
+  animation-delay: 3.3s;
+}
+
+
+/* ========================================
+   PROFILE IMAGE
+======================================== */
+
+.hero-photo-frame {
+  animation: photo-float 6s ease-in-out infinite;
+}
+
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes tech-float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+
+}
+
+
+@keyframes photo-float {
+
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%)
+      rotate(-2deg);
+  }
+
+  50% {
+    transform:
+      translate(-50%, calc(-50% - 7px))
+      rotate(-1deg);
+  }
+
+}
+
+
+@keyframes dot-float {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes orbit-rotate-1 {
+
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotate(-18deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotate(342deg);
+  }
+
+}
+
+
+@keyframes orbit-rotate-2 {
+
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotate(25deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotate(-335deg);
+  }
+
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1024px) {
+
+  .hero-orbit-area {
+    transform: scale(0.85);
+  }
+
+}
+
+
+@media (max-width: 640px) {
+
+  .hero-orbit-area {
+    height: 430px;
+    width: 430px;
+    transform: scale(0.78);
+  }
+
+  .hero-photo-frame {
+    width: 300px;
+  }
+
+  .tech-logo {
+    width: 68px;
+    height: 68px;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-orbit,
+  .hero-orbit-1,
+  .hero-orbit-2,
+  .tech-logo,
+  .hero-photo-frame,
+  .orbit-dot {
+    animation: none !important;
+  }
+
+}
+
+/* ========================================
+   HERO MOUSE ORANGE EFFECT
+======================================== */
+
+.hero-mouse-glow {
+  width: 180px;
+  height: 180px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 9999px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(240, 125, 54, 0.22) 0%,
+      rgba(240, 125, 54, 0.12) 30%,
+      rgba(240, 125, 54, 0.05) 55%,
+      transparent 75%
+    );
+
+  filter: blur(12px);
+
+  transition:
+    left 0.08s ease-out,
+    top 0.08s ease-out;
+
+  pointer-events: none;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.6rem 0.9rem;
+  background: #e8ebf0;
+  color: #60758f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow:
+    4px 4px 9px #c5c9d0,
+    -4px -4px 9px #ffffff;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.skill-pill:hover {
+  transform: translateY(-3px);
+  color: #f07d36;
+  box-shadow:
+    5px 5px 12px #c5c9d0,
+    -5px -5px 12px #ffffff;
+}
