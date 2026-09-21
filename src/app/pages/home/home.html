@@ -3,177 +3,444 @@
   <!-- ==========================================
        NAVBAR
   =========================================== -->
-  <header
-    class="sticky top-0 z-50 border-b border-white/60 bg-[#e8ebf0]/90 backdrop-blur-xl"
+  <!-- ========================================
+     HEADER / NAVBAR
+======================================== -->
+<header
+  class="sticky top-0 z-50 border-b border-white/60 bg-[#e8ebf0]/90 backdrop-blur-xl"
+>
+  <div
+    class="navbar mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
   >
-    <div class="navbar mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-      <!-- Logo -->
-      <div class="navbar-start">
-        <a
-          href="#home"
-          class="flex items-center gap-3"
+    <!-- ========================================
+         LOGO
+    ======================================== -->
+
+    <div class="navbar-start">
+
+      <a
+        href="#home"
+        (click)="scrollToSection('home', $event)"
+        class="flex items-center gap-3"
+      >
+
+        <div
+          class="grid h-10 w-10 place-items-center rounded-xl bg-[#e8ebf0] text-[#f07d36]"
+          style="
+            box-shadow:
+              6px 6px 12px #c5c9d0,
+              -6px -6px 12px #ffffff;
+          "
         >
-          <div
-            class="grid h-10 w-10 place-items-center rounded-xl bg-[#e8ebf0] text-[#f07d36]"
-            style="box-shadow: 6px 6px 12px #c5c9d0, -6px -6px 12px #ffffff;"
+          <svg
+            lucideCode2
+            class="h-5 w-5"
+          ></svg>
+        </div>
+
+
+        <div>
+
+          <h1
+            class="text-lg font-extrabold leading-none"
           >
-            <svg lucideCode2 class="h-5 w-5"></svg>
-          </div>
+            Jessie<span class="text-[#f07d36]">.</span>
+          </h1>
 
-          <div>
-            <h1 class="text-lg font-extrabold leading-none">
-              Jessie<span class="text-[#f07d36]">.</span>
-            </h1>
-
-            <p class="mt-1 text-[10px] font-medium text-[#858c96]">
-              Web Developer
-            </p>
-          </div>
-        </a>
-      </div>
-
-
-      <!-- Desktop Navigation -->
-      <div class="navbar-center hidden lg:flex">
-        <nav class="flex items-center gap-2">
-
-          <a
-            href="#home"
-            class="rounded-xl px-4 py-2 text-sm font-semibold text-[#f07d36] transition duration-300 hover:-translate-y-0.5"
+          <p
+            class="mt-1 text-[10px] font-medium text-[#858c96]"
           >
-            Home
-          </a>
+            Web Developer
+          </p>
 
-          <a
-            href="#about"
-            class="rounded-xl px-4 py-2 text-sm font-semibold text-[#687386] transition duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
-          >
-            About
-          </a>
+        </div>
 
-          <a
-            href="#skills"
-            class="rounded-xl px-4 py-2 text-sm font-semibold text-[#687386] transition duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
-          >
-            Skills
-          </a>
+      </a>
 
-          <a
-            href="#projects"
-            class="rounded-xl px-4 py-2 text-sm font-semibold text-[#687386] transition duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
-          >
-            Projects
-          </a>
-
-          <a
-            href="#services"
-            class="rounded-xl px-4 py-2 text-sm font-semibold text-[#687386] transition duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
-          >
-            Services
-          </a>
-
-          <a
-            href="#contact"
-            class="rounded-xl px-4 py-2 text-sm font-semibold text-[#687386] transition duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
-          >
-            Contact
-          </a>
-
-        </nav>
-      </div>
-
-
-      <!-- Right -->
-      <div class="navbar-end gap-3">
-
-        <a
-          href="#contact"
-          class="hidden items-center gap-2 rounded-2xl bg-[#e8ebf0] px-6 py-3 text-sm font-bold text-[#f07d36] transition duration-300 hover:-translate-y-1 sm:inline-flex"
-          style="box-shadow: 7px 7px 14px #c5c9d0, -7px -7px 14px #ffffff;"
-        >
-          Let's Talk
-          <svg lucideArrowRight class="h-4 w-4"></svg>
-        </a>
-
-
-        <!-- Mobile Menu -->
-        <button
-          type="button"
-          class="grid h-11 w-11 place-items-center rounded-xl bg-[#e8ebf0] text-[#687386] transition hover:text-[#f07d36] lg:hidden"
-          style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff;"
-          (click)="toggleMenu()"
-          aria-label="Toggle navigation menu"
-        >
-          @if (menuOpen) {
-            <svg lucideX class="h-5 w-5"></svg>
-          } @else {
-            <svg lucideMenu class="h-5 w-5"></svg>
-          }
-        </button>
-
-      </div>
     </div>
 
 
-    <!-- Mobile Navigation -->
-    @if (menuOpen) {
-      <div class="border-t border-white/60 bg-[#e8ebf0] px-4 py-4 lg:hidden">
+    <!-- ========================================
+         DESKTOP NAVIGATION
+    ======================================== -->
 
-        <nav class="mx-auto flex max-w-7xl flex-col gap-2">
+    <div
+      class="navbar-center hidden lg:flex"
+    >
 
-          <a
-            href="#home"
-            class="rounded-xl px-4 py-3 text-sm font-semibold text-[#f07d36]"
-            (click)="closeMenu()"
-          >
-            Home
-          </a>
+      <nav
+        class="flex items-center gap-2"
+      >
 
-          <a
-            href="#about"
-            class="rounded-xl px-4 py-3 text-sm font-semibold text-[#687386]"
-            (click)="closeMenu()"
-          >
-            About
-          </a>
 
-          <a
-            href="#skills"
-            class="rounded-xl px-4 py-3 text-sm font-semibold text-[#687386]"
-            (click)="closeMenu()"
-          >
-            Skills
-          </a>
+        <!-- HOME -->
 
-          <a
-            href="#projects"
-            class="rounded-xl px-4 py-3 text-sm font-semibold text-[#687386]"
-            (click)="closeMenu()"
-          >
-            Projects
-          </a>
+        <a
+          href="#home"
+          (click)="scrollToSection('home', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'home'"
+          [class.text-[#687386]]="activeSection !== 'home'"
+        >
 
-          <a
-            href="#services"
-            class="rounded-xl px-4 py-3 text-sm font-semibold text-[#687386]"
-            (click)="closeMenu()"
-          >
-            Services
-          </a>
+          Home
 
-          <a
-            href="#contact"
-            class="rounded-xl px-4 py-3 text-sm font-semibold text-[#687386]"
-            (click)="closeMenu()"
-          >
-            Contact
-          </a>
+          @if (activeSection === 'home') {
 
-        </nav>
-      </div>
-    }
-  </header>
+            <span
+              class="absolute bottom-0 left-1/2 h-1 w-5 -translate-x-1/2 rounded-full bg-[#f07d36] shadow-[0_0_8px_rgba(240,125,54,0.35)]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- ABOUT -->
+
+        <a
+          href="#about"
+          (click)="scrollToSection('about', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'about'"
+          [class.text-[#687386]]="activeSection !== 'about'"
+        >
+
+          About
+
+          @if (activeSection === 'about') {
+
+            <span
+              class="absolute bottom-0 left-1/2 h-1 w-5 -translate-x-1/2 rounded-full bg-[#f07d36] shadow-[0_0_8px_rgba(240,125,54,0.35)]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- SKILLS -->
+
+        <a
+          href="#skills"
+          (click)="scrollToSection('skills', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'skills'"
+          [class.text-[#687386]]="activeSection !== 'skills'"
+        >
+
+          Skills
+
+          @if (activeSection === 'skills') {
+
+            <span
+              class="absolute bottom-0 left-1/2 h-1 w-5 -translate-x-1/2 rounded-full bg-[#f07d36] shadow-[0_0_8px_rgba(240,125,54,0.35)]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- PROJECTS -->
+
+        <a
+          href="#projects"
+          (click)="scrollToSection('projects', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'projects'"
+          [class.text-[#687386]]="activeSection !== 'projects'"
+        >
+
+          Projects
+
+          @if (activeSection === 'projects') {
+
+            <span
+              class="absolute bottom-0 left-1/2 h-1 w-5 -translate-x-1/2 rounded-full bg-[#f07d36] shadow-[0_0_8px_rgba(240,125,54,0.35)]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- SERVICES -->
+
+        <a
+          href="#services"
+          (click)="scrollToSection('services', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'services'"
+          [class.text-[#687386]]="activeSection !== 'services'"
+        >
+
+          Services
+
+          @if (activeSection === 'services') {
+
+            <span
+              class="absolute bottom-0 left-1/2 h-1 w-5 -translate-x-1/2 rounded-full bg-[#f07d36] shadow-[0_0_8px_rgba(240,125,54,0.35)]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- CONTACT -->
+
+        <a
+          href="#contact"
+          (click)="scrollToSection('contact', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'contact'"
+          [class.text-[#687386]]="activeSection !== 'contact'"
+        >
+
+          Contact
+
+          @if (activeSection === 'contact') {
+
+            <span
+              class="absolute bottom-0 left-1/2 h-1 w-5 -translate-x-1/2 rounded-full bg-[#f07d36] shadow-[0_0_8px_rgba(240,125,54,0.35)]"
+            ></span>
+
+          }
+
+        </a>
+
+      </nav>
+
+    </div>
+
+
+    <!-- ========================================
+         RIGHT SIDE
+    ======================================== -->
+
+    <div
+      class="navbar-end gap-3"
+    >
+
+      <a
+        href="#contact"
+        (click)="scrollToSection('contact', $event)"
+        class="hidden items-center gap-2 rounded-2xl bg-[#e8ebf0] px-6 py-3 text-sm font-bold text-[#f07d36] transition-all duration-300 hover:-translate-y-1"
+        style="
+          box-shadow:
+            7px 7px 14px #c5c9d0,
+            -7px -7px 14px #ffffff;
+        "
+      >
+
+        Let's Talk
+
+        <svg
+          lucideArrowRight
+          class="h-4 w-4"
+        ></svg>
+
+      </a>
+
+
+      <!-- MOBILE BUTTON -->
+
+      <button
+        type="button"
+        class="grid h-11 w-11 place-items-center rounded-xl bg-[#e8ebf0] text-[#687386] transition-all duration-300 hover:text-[#f07d36] lg:hidden"
+        style="
+          box-shadow:
+            5px 5px 10px #c5c9d0,
+            -5px -5px 10px #ffffff;
+        "
+        (click)="toggleMenu()"
+        aria-label="Toggle navigation menu"
+      >
+
+        @if (menuOpen) {
+
+          <svg
+            lucideX
+            class="h-5 w-5"
+          ></svg>
+
+        } @else {
+
+          <svg
+            lucideMenu
+            class="h-5 w-5"
+          ></svg>
+
+        }
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================
+       MOBILE NAVIGATION
+  ======================================== -->
+
+  @if (menuOpen) {
+
+    <div
+      class="border-t border-white/60 bg-[#e8ebf0] px-4 py-4 lg:hidden"
+    >
+
+      <nav
+        class="mx-auto flex max-w-7xl flex-col gap-2"
+      >
+
+
+        <!-- HOME -->
+
+        <a
+          href="#home"
+          (click)="scrollToSection('home', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'home'"
+          [class.text-[#687386]]="activeSection !== 'home'"
+        >
+
+          Home
+
+          @if (activeSection === 'home') {
+
+            <span
+              class="absolute bottom-1 left-4 h-1 w-5 rounded-full bg-[#f07d36]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- ABOUT -->
+
+        <a
+          href="#about"
+          (click)="scrollToSection('about', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'about'"
+          [class.text-[#687386]]="activeSection !== 'about'"
+        >
+
+          About
+
+          @if (activeSection === 'about') {
+
+            <span
+              class="absolute bottom-1 left-4 h-1 w-5 rounded-full bg-[#f07d36]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- SKILLS -->
+
+        <a
+          href="#skills"
+          (click)="scrollToSection('skills', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'skills'"
+          [class.text-[#687386]]="activeSection !== 'skills'"
+        >
+
+          Skills
+
+          @if (activeSection === 'skills') {
+
+            <span
+              class="absolute bottom-1 left-4 h-1 w-5 rounded-full bg-[#f07d36]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- PROJECTS -->
+
+        <a
+          href="#projects"
+          (click)="scrollToSection('projects', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'projects'"
+          [class.text-[#687386]]="activeSection !== 'projects'"
+        >
+
+          Projects
+
+          @if (activeSection === 'projects') {
+
+            <span
+              class="absolute bottom-1 left-4 h-1 w-5 rounded-full bg-[#f07d36]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- SERVICES -->
+
+        <a
+          href="#services"
+          (click)="scrollToSection('services', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'services'"
+          [class.text-[#687386]]="activeSection !== 'services'"
+        >
+
+          Services
+
+          @if (activeSection === 'services') {
+
+            <span
+              class="absolute bottom-1 left-4 h-1 w-5 rounded-full bg-[#f07d36]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- CONTACT -->
+
+        <a
+          href="#contact"
+          (click)="scrollToSection('contact', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'contact'"
+          [class.text-[#687386]]="activeSection !== 'contact'"
+        >
+
+          Contact
+
+          @if (activeSection === 'contact') {
+
+            <span
+              class="absolute bottom-1 left-4 h-1 w-5 rounded-full bg-[#f07d36]"
+            ></span>
+
+          }
+
+        </a>
+
+      </nav>
+
+    </div>
+
+  }
+
+</header>
 
 
 
@@ -186,196 +453,396 @@
     <!-- ========================================
          HERO
     ========================================= -->
-    <section
-      id="home"
-      class="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8 lg:py-28"
-    >
+   <!-- ========================================
+     HERO
+======================================== -->
+<section
+  id="home"
+  class="hero-section relative flex min-h-[calc(100vh-78px)] items-center overflow-hidden bg-[#e8ebf0] px-6 py-16 lg:px-10"
+  (mousemove)="onHeroMouseMove($event)"
+>
 
-      <!-- Decorative Background -->
+  <!-- ========================================
+       SOFT BACKGROUND GLOW
+  ======================================== -->
+
+  <div
+    class="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-[#f07d36]/10 blur-[120px]"
+  ></div>
+
+  <div
+    class="pointer-events-none absolute right-0 top-1/4 h-96 w-96 rounded-full bg-white/80 blur-[120px]"
+  ></div>
+
+
+  <!-- ========================================
+       MOUSE ORANGE GLOW
+  ======================================== -->
+
+  <div
+    class="hero-mouse-glow pointer-events-none absolute z-10"
+    [style.left.px]="mouseX"
+    [style.top.px]="mouseY"
+  ></div>
+
+
+  <!-- ========================================
+       MAIN HERO CONTAINER
+  ======================================== -->
+
+  <div
+    class="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-4"
+  >
+
+
+    <!-- ========================================
+         LEFT SIDE
+    ======================================== -->
+
+    <div class="scroll-left relative z-20">
+
+      <!-- Small Badge -->
+
       <div
-        class="absolute -left-24 top-20 h-64 w-64 rounded-full bg-[#f07d36]/10 blur-3xl"
-      ></div>
-
-      <div
-        class="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[#f07d36]/10 blur-3xl"
-      ></div>
-
-
-      <div
-        class="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2"
+        class="mb-8 inline-flex items-center gap-3 rounded-full bg-[#e8ebf0] px-5 py-3 text-sm font-semibold text-[#60758f]"
+        style="
+          box-shadow:
+            7px 7px 14px #c5c9d0,
+            -7px -7px 14px #ffffff;
+        "
       >
 
-        <!-- Hero Text -->
-        <div class="scroll-left">
+        <span
+          class="h-3 w-3 rounded-full bg-[#f07d36] shadow-[0_0_12px_rgba(240,125,54,0.45)]"
+        ></span>
 
-          <!-- Badge -->
-          <div
-            class="mb-6 inline-flex items-center gap-2 rounded-full bg-[#e8ebf0] px-5 py-2.5 text-sm font-semibold text-[#687386]"
-            style="box-shadow: inset 4px 4px 8px #cbd0d8, inset -4px -4px 8px #ffffff;"
-          >
-            <svg lucideCode2 class="h-4 w-4 text-[#f07d36]"></svg>
+        Web Developer
 
-            Web Developer
-          </div>
+      </div>
 
 
-          <!-- Heading -->
-          <h2
-            class="max-w-2xl text-5xl font-extrabold leading-tight tracking-tight text-[#1f2937] sm:text-6xl lg:text-7xl"
-          >
-            Hi, I'm
-            <span class="text-[#687386]">
-              Jessie
-            </span>
-          </h2>
+      <!-- Main Heading -->
+
+      <h1
+        class="max-w-3xl text-[3.8rem] font-black leading-[0.98] tracking-[-0.04em] text-[#202938] sm:text-[4.7rem] lg:text-[5.4rem]"
+      >
+
+        Hi, I'm
+
+        <span class="text-[#687386]">
+          Jessie
+        </span>
+
+      </h1>
 
 
-          <!-- Description -->
-          <p
-            class="mt-6 max-w-2xl text-base leading-8 text-[#687386] sm:text-lg"
-          >
-            I build modern, responsive, and user-friendly web applications
-            using technologies like Angular, Laravel, PHP, MySQL, and
-            Tailwind CSS.
-          </p>
+      <!-- Description -->
+
+      <p
+        class="mt-8 max-w-2xl text-base leading-8 text-[#60758f] sm:text-lg"
+      >
+
+        I build modern, responsive, and user-friendly web applications using
+        technologies like Angular, Laravel, PHP, MySQL, and Tailwind CSS.
+
+      </p>
 
 
-          <!-- Buttons -->
-          <div class="mt-8 flex flex-wrap gap-4">
+      <!-- ========================================
+           BUTTONS
+      ======================================== -->
 
-            <a
-              href="#contact"
-              class="inline-flex items-center gap-2 rounded-2xl bg-[#e8ebf0] px-6 py-3.5 text-sm font-bold text-[#374151] transition duration-300 hover:-translate-y-1"
-              style="box-shadow: 7px 7px 14px #c5c9d0, -7px -7px 14px #ffffff;"
-            >
-              <svg lucideMail class="h-4 w-4"></svg>
-              Contact Me
-            </a>
+      <div class="mt-9 flex flex-wrap gap-5">
+
+        <!-- Contact -->
+
+        <a
+          href="#contact"
+          (click)="scrollToSection('contact', $event)"
+          class="group inline-flex items-center gap-3 rounded-2xl bg-[#e8ebf0] px-7 py-4 text-sm font-bold text-[#f07d36] transition-all duration-300 hover:-translate-y-1"
+          style="
+            box-shadow:
+              8px 8px 16px #c5c9d0,
+              -8px -8px 16px #ffffff;
+          "
+        >
+
+          <svg
+            lucideMail
+            class="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
+          ></svg>
+
+          Contact Me
+
+        </a>
 
 
-            <a
-              href="#projects"
-              class="inline-flex items-center gap-2 rounded-2xl bg-[#e8ebf0] px-6 py-3.5 text-sm font-bold text-[#374151] transition duration-300 hover:-translate-y-1"
-              style="box-shadow: 7px 7px 14px #c5c9d0, -7px -7px 14px #ffffff;"
-            >
-              View Projects
-              <svg lucideArrowRight class="h-4 w-4"></svg>
-            </a>
+        <!-- Projects -->
 
-          </div>
+        <a
+          href="#projects"
+          (click)="scrollToSection('projects', $event)"
+          class="group inline-flex items-center gap-3 rounded-2xl bg-[#e8ebf0] px-7 py-4 text-sm font-bold text-[#526176] transition-all duration-300 hover:-translate-y-1 hover:text-[#f07d36]"
+          style="
+            box-shadow:
+              8px 8px 16px #c5c9d0,
+              -8px -8px 16px #ffffff;
+          "
+        >
+
+          View Projects
+
+          <svg
+            lucideArrowRight
+            class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+          ></svg>
+
+        </a>
+
+      </div>
 
 
-          <!-- Small Info -->
-          <div
-            class="mt-10 flex flex-wrap gap-6 text-sm text-[#687386]"
-          >
+      <!-- ========================================
+           BOTTOM INFO
+      ======================================== -->
 
-            <div class="flex items-center gap-2">
-              <svg lucideCode2 class="h-4 w-4 text-[#f07d36]"></svg>
-              Web Development
-            </div>
+      <div
+        class="mt-12 flex flex-wrap items-center gap-x-9 gap-y-5"
+      >
 
-            <div class="flex items-center gap-2">
-              <svg lucidePalette class="h-4 w-4 text-[#f07d36]"></svg>
-              Graphic Design
-            </div>
+        <!-- Web Development -->
 
-            <div class="flex items-center gap-2">
-              <svg lucideMapPin class="h-4 w-4 text-[#f07d36]"></svg>
-              Philippines
-            </div>
+        <div
+          class="flex items-center gap-3 text-sm text-[#60758f]"
+        >
 
-          </div>
+          <svg
+            lucideCode2
+            class="h-5 w-5 text-[#f07d36]"
+          ></svg>
+
+          Web Development
 
         </div>
 
 
+        <!-- Graphic Design -->
 
-        <!-- Profile Image -->
-        <div class="scroll-right relative">
+        <div
+          class="flex items-center gap-3 text-sm text-[#60758f]"
+        >
 
-          <!-- Decorative Circle -->
-          <div
-            class="absolute -right-5 -top-5 h-32 w-32 rounded-full bg-[#f07d36]/10 blur-2xl"
-          ></div>
+          <svg
+            lucidePalette
+            class="h-5 w-5 text-[#f07d36]"
+          ></svg>
 
-          <div
-            class="absolute -bottom-8 -left-8 h-40 w-40 rounded-full bg-[#f07d36]/10 blur-3xl"
-          ></div>
+          Graphic Design
 
-
-          <!-- Image Container -->
-          <div
-            class="relative mx-auto max-w-md rounded-[2rem] bg-[#e8ebf0] p-5"
-            style="box-shadow: 12px 12px 24px #c5c9d0, -12px -12px 24px #ffffff;"
-          >
-
-            <div
-              class="overflow-hidden rounded-[1.5rem] bg-[#e8ebf0]"
-              style="box-shadow: inset 6px 6px 12px #c5c9d0, inset -6px -6px 12px #ffffff;"
-            >
-
-              <img
-                src="/images/Formal-pic.png"
-                alt="Jessie Gamulo"
-                class="aspect-square h-full w-full object-cover"
-              />
-
-            </div>
+        </div>
 
 
-            <!-- Floating Card -->
-            <div
-              class="absolute -bottom-5 -left-5 flex items-center gap-3 rounded-2xl bg-[#e8ebf0] px-5 py-4"
-              style="box-shadow: 8px 8px 16px #c5c9d0, -8px -8px 16px #ffffff;"
-            >
-              <div
-                class="grid h-10 w-10 place-items-center rounded-xl bg-[#e8ebf0] text-[#f07d36]"
-                style="box-shadow: inset 3px 3px 6px #c5c9d0, inset -3px -3px 6px #ffffff;"
-              >
-                <svg lucideCode2 class="h-5 w-5"></svg>
-              </div>
+        <!-- Location -->
 
-              <div>
-                <p class="text-xs text-[#858c96]">
-                  Focus
-                </p>
+        <div
+          class="flex items-center gap-3 text-sm text-[#60758f]"
+        >
 
-                <p class="text-sm font-bold text-[#374151]">
-                  Web Development
-                </p>
-              </div>
-            </div>
+          <svg
+            lucideMapPin
+            class="h-5 w-5 text-[#f07d36]"
+          ></svg>
 
-
-            <!-- Floating Design Card -->
-            <div
-              class="absolute -right-5 top-8 flex items-center gap-3 rounded-2xl bg-[#e8ebf0] px-5 py-4"
-              style="box-shadow: 8px 8px 16px #c5c9d0, -8px -8px 16px #ffffff;"
-            >
-              <div
-                class="grid h-10 w-10 place-items-center rounded-xl bg-[#f07d36] text-white"
-              >
-                <svg lucidePalette class="h-5 w-5"></svg>
-              </div>
-
-              <div>
-                <p class="text-xs text-[#858c96]">
-                  Creative
-                </p>
-
-                <p class="text-sm font-bold text-[#374151]">
-                  Visual Design
-                </p>
-              </div>
-            </div>
-
-          </div>
+          Philippines
 
         </div>
 
       </div>
-    </section>
+
+    </div>
+
+
+    <!-- ========================================
+         RIGHT SIDE
+    ======================================== -->
+
+    <div
+      class="scroll-right relative mx-auto flex min-h-[560px] w-full max-w-[720px] items-center justify-center"
+    >
+
+      <!-- ========================================
+           ORBITAL AREA
+      ======================================== -->
+
+      <div
+        class="hero-orbit-area relative h-[540px] w-[540px] sm:h-[600px] sm:w-[600px]"
+      >
+
+        <!-- Orange Orbit 1 -->
+
+        <div
+          class="hero-orbit hero-orbit-1"
+        ></div>
+
+
+        <!-- Orange Orbit 2 -->
+
+        <div
+          class="hero-orbit hero-orbit-2"
+        ></div>
+
+
+        <!-- ========================================
+             PROFILE FRAME
+        ======================================== -->
+
+        <div
+          class="hero-photo-frame absolute left-1/1 top-1/2 z-20 w-[330px] -translate-x-70 -translate-y-1/7 rotate-[-2deg] rounded-[38px] bg-[#edf0f4] p-5 sm:w-[390px]"
+          style="
+            box-shadow:
+              18px 18px 35px #c5c9d0,
+              -18px -18px 35px #ffffff;
+          "
+        >
+
+          <div
+            class="overflow-hidden rounded-[30px] bg-white"
+          >
+
+            <img
+              src="/images/Formal-pic.png"
+              alt="Jessie - Web Developer"
+              class="block w-full object-cover"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- ========================================
+             ANGULAR
+        ======================================== -->
+
+        <div
+          class="tech-logo tech-angular absolute left-[14%] top-[5%]"
+        >
+
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
+            alt="Angular"
+          >
+
+        </div>
+
+
+        <!-- ========================================
+             LARAVEL
+        ======================================== -->
+
+        <div
+          class="tech-logo tech-laravel absolute right-[5%] top-[12%]"
+        >
+
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
+            alt="Laravel"
+          >
+
+        </div>
+
+
+        <!-- ========================================
+             TAILWIND
+        ======================================== -->
+
+        <div
+          class="tech-logo tech-tailwind absolute left-[5%] top-[43%]"
+        >
+
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+            alt="Tailwind CSS"
+          >
+
+        </div>
+
+
+        <!-- ========================================
+             MYSQL
+        ======================================== -->
+
+        <div
+          class="tech-logo tech-mysql absolute right-[1%] top-[45%]"
+        >
+
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+            alt="MySQL"
+          >
+
+        </div>
+
+
+        <!-- ========================================
+             PHP
+        ======================================== -->
+
+        <div
+          class="tech-logo tech-php absolute bottom-[8%] left-[14%]"
+        >
+
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+            alt="PHP"
+          >
+
+        </div>
+
+
+        <!-- ========================================
+             DATABASE
+        ======================================== -->
+
+        <div
+          class="tech-logo tech-database absolute bottom-[3%] right-[14%]"
+        >
+
+          <svg
+            lucideDatabase
+            class="h-10 w-10 text-[#4386c5]"
+          ></svg>
+
+        </div>
+
+
+        <!-- ========================================
+             ORBIT DOTS
+        ======================================== -->
+
+        <span
+          class="orbit-dot orbit-dot-1"
+        ></span>
+
+        <span
+          class="orbit-dot orbit-dot-2"
+        ></span>
+
+        <span
+          class="orbit-dot orbit-dot-3"
+        ></span>
+
+        <span
+          class="orbit-dot orbit-dot-4"
+        ></span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
 
 
@@ -533,200 +1000,148 @@
 
 
     <!-- ========================================
-         SKILLS
-    ========================================= -->
-    <section
-      id="skills"
-      class="bg-[#e1e4e9] px-4 py-20 sm:px-6 lg:px-8"
-    >
+     SKILLS SECTION
+======================================== -->
 
-      <div class="mx-auto max-w-7xl">
+<section
+  id="skills"
+  class="relative overflow-hidden bg-[#e8ebf0] px-6 py-24 lg:px-10"
+>
+  <!-- Background Decorations -->
+  <div
+    class="pointer-events-none absolute -left-32 top-40 h-80 w-80 rounded-full bg-[#f07d36]/10 blur-[120px]"
+  ></div>
 
-        <div class="scroll-animate mx-auto max-w-2xl text-center">
+  <div
+    class="pointer-events-none absolute -right-32 bottom-20 h-96 w-96 rounded-full bg-white/70 blur-[130px]"
+  ></div>
 
-          <p
-            class="text-sm font-bold uppercase tracking-[0.2em] text-[#f07d36]"
-          >
-            My Skills
-          </p>
+  <div class="relative mx-auto max-w-7xl">
 
-          <h2
-            class="mt-3 text-3xl font-extrabold text-[#1f2937] sm:text-4xl"
-          >
-            Technologies I Work With
-          </h2>
+    <!-- Section Header -->
+    <div class="scroll-animate mx-auto max-w-3xl text-center">
 
-          <p class="mt-4 leading-7 text-[#687386]">
-            Technologies and tools I am currently learning and using
-            in my projects.
-          </p>
+      <div
+        class="mb-5 inline-flex items-center gap-2 rounded-full bg-[#e8ebf0] px-5 py-2.5 text-xs font-bold uppercase tracking-[0.25em] text-[#f07d36]"
+        style="box-shadow: 5px 5px 12px #c5c9d0, -5px -5px 12px #ffffff;"
+      >
+        <span
+          class="h-2 w-2 rounded-full bg-[#f07d36] shadow-[0_0_10px_rgba(240,125,54,0.55)]"
+        ></span>
 
-        </div>
+        My Skills
+      </div>
+
+      <h2
+        class="text-4xl font-black tracking-[-0.03em] text-[#202938] sm:text-5xl lg:text-6xl"
+      >
+        Technologies I
+        <span class="text-[#f07d36]">Work With</span>
+      </h2>
+
+      <p
+        class="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#60758f] sm:text-lg"
+      >
+        Technologies and tools I use to build modern, responsive,
+        and user-friendly digital experiences.
+      </p>
+
+    </div>
 
 
-        <!-- Skill Cards -->
-        <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+    <!-- ========================================
+         CORE STACK
+    ======================================== -->
 
+    <div class="scroll-scale mt-14">
 
-          <!-- Frontend -->
-          <div
-            class="scroll-stagger scroll-delay-1 rounded-3xl bg-[#e8ebf0] p-6"
-            style="box-shadow: 8px 8px 16px #c5c9d0, -8px -8px 16px #ffffff;"
-          >
+      <div
+        class="rounded-[30px] bg-[#e8ebf0] p-6 sm:p-8"
+        style="box-shadow: inset 6px 6px 14px #c9cdd4, inset -6px -6px 14px #ffffff;"
+      >
 
-            <div
-              class="grid h-14 w-14 place-items-center rounded-2xl bg-[#f07d36] text-white"
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+
+          <div>
+            <p
+              class="text-xs font-bold uppercase tracking-[0.22em] text-[#f07d36]"
             >
-              <svg lucideGlobe class="h-6 w-6"></svg>
-            </div>
-
-            <h3 class="mt-5 text-xl font-bold">
-              Frontend
-            </h3>
-
-            <p class="mt-2 text-sm leading-6 text-[#687386]">
-              Building responsive and interactive user interfaces.
+              Core Stack
             </p>
 
-            <div class="mt-5 flex flex-wrap gap-2">
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                HTML
-              </span>
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                CSS
-              </span>
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                JavaScript
-              </span>
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                Angular
-              </span>
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                React
-              </span>
-
-            </div>
-
+            <h3
+              class="mt-2 text-2xl font-black text-[#202938]"
+            >
+              My Development Toolkit
+            </h3>
           </div>
 
 
-          <!-- Backend -->
-          <div
-            class="scroll-stagger scroll-delay-2 rounded-3xl bg-[#e8ebf0] p-6"
-            style="box-shadow: 8px 8px 16px #c5c9d0, -8px -8px 16px #ffffff;"
-          >
+          <div class="flex flex-wrap gap-3">
 
+            <!-- Angular -->
             <div
-              class="grid h-14 w-14 place-items-center rounded-2xl bg-[#f07d36] text-white"
+              class="group flex items-center gap-2 rounded-xl bg-[#e8ebf0] px-4 py-3 text-sm font-semibold text-[#526176] transition-all duration-300 hover:-translate-y-1 hover:text-[#f07d36]"
+              style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff;"
             >
-              <svg lucideDatabase class="h-6 w-6"></svg>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
+                class="h-5 w-5"
+                alt="Angular"
+              />
+              Angular
             </div>
 
-            <h3 class="mt-5 text-xl font-bold">
-              Backend
-            </h3>
-
-            <p class="mt-2 text-sm leading-6 text-[#687386]">
-              Developing server-side applications and APIs.
-            </p>
-
-            <div class="mt-5 flex flex-wrap gap-2">
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                PHP
-              </span>
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                Laravel
-              </span>
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                MySQL
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <!-- Design -->
-          <div
-            class="scroll-stagger scroll-delay-3 rounded-3xl bg-[#e8ebf0] p-6"
-            style="box-shadow: 8px 8px 16px #c5c9d0, -8px -8px 16px #ffffff;"
-          >
-
+            <!-- Laravel -->
             <div
-              class="grid h-14 w-14 place-items-center rounded-2xl bg-[#f07d36] text-white"
+              class="group flex items-center gap-2 rounded-xl bg-[#e8ebf0] px-4 py-3 text-sm font-semibold text-[#526176] transition-all duration-300 hover:-translate-y-1 hover:text-[#f07d36]"
+              style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff;"
             >
-              <svg lucidePalette class="h-6 w-6"></svg>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
+                class="h-5 w-5"
+                alt="Laravel"
+              />
+              Laravel
             </div>
 
-            <h3 class="mt-5 text-xl font-bold">
-              Design
-            </h3>
-
-            <p class="mt-2 text-sm leading-6 text-[#687386]">
-              Creating clean layouts and visual designs.
-            </p>
-
-            <div class="mt-5 flex flex-wrap gap-2">
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                UI Design
-              </span>
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                Graphic Design
-              </span>
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                Visual Design
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <!-- Tools -->
-          <div
-            class="scroll-stagger scroll-delay-4 rounded-3xl bg-[#e8ebf0] p-6"
-            style="box-shadow: 8px 8px 16px #c5c9d0, -8px -8px 16px #ffffff;"
-          >
-
+            <!-- PHP -->
             <div
-              class="grid h-14 w-14 place-items-center rounded-2xl bg-[#f07d36] text-white"
+              class="group flex items-center gap-2 rounded-xl bg-[#e8ebf0] px-4 py-3 text-sm font-semibold text-[#526176] transition-all duration-300 hover:-translate-y-1 hover:text-[#f07d36]"
+              style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff;"
             >
-              <svg lucideSmartphone class="h-6 w-6"></svg>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                class="h-5 w-5"
+                alt="PHP"
+              />
+              PHP
             </div>
 
-            <h3 class="mt-5 text-xl font-bold">
-              Tools & UI
-            </h3>
+            <!-- MySQL -->
+            <div
+              class="group flex items-center gap-2 rounded-xl bg-[#e8ebf0] px-4 py-3 text-sm font-semibold text-[#526176] transition-all duration-300 hover:-translate-y-1 hover:text-[#f07d36]"
+              style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff;"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                class="h-5 w-5"
+                alt="MySQL"
+              />
+              MySQL
+            </div>
 
-            <p class="mt-2 text-sm leading-6 text-[#687386]">
-              Tools I use to create modern interfaces.
-            </p>
-
-            <div class="mt-5 flex flex-wrap gap-2">
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                Tailwind CSS
-              </span>
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                daisyUI
-              </span>
-
-              <span class="rounded-lg bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#687386]">
-                Git
-              </span>
-
+            <!-- Tailwind -->
+            <div
+              class="group flex items-center gap-2 rounded-xl bg-[#e8ebf0] px-4 py-3 text-sm font-semibold text-[#526176] transition-all duration-300 hover:-translate-y-1 hover:text-[#f07d36]"
+              style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff;"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+                class="h-5 w-5"
+                alt="Tailwind CSS"
+              />
+              Tailwind CSS
             </div>
 
           </div>
@@ -734,7 +1149,328 @@
         </div>
 
       </div>
-    </section>
+
+    </div>
+
+
+    <!-- ========================================
+         SKILL CARDS
+    ======================================== -->
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+
+
+      <!-- FRONTEND -->
+      <div
+        class="scroll-stagger scroll-delay-1 group relative overflow-hidden rounded-[30px] bg-[#e8ebf0] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
+        style="box-shadow: 12px 12px 25px #c5c9d0, -12px -12px 25px #ffffff;"
+      >
+
+        <!-- Hover Glow -->
+        <div
+          class="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#f07d36]/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+        ></div>
+
+        <div class="relative">
+
+          <div class="flex items-start justify-between">
+
+            <div
+              class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+            >
+              <svg lucideGlobe class="h-8 w-8"></svg>
+            </div>
+
+            <span
+              class="rounded-full bg-[#f07d36]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#f07d36]"
+            >
+              Frontend
+            </span>
+
+          </div>
+
+
+          <h3 class="mt-7 text-2xl font-black text-[#202938]">
+            Frontend Development
+          </h3>
+
+          <p class="mt-3 max-w-lg leading-7 text-[#60758f]">
+            Building responsive and interactive interfaces with modern
+            frontend technologies.
+          </p>
+
+
+          <!-- Technologies -->
+          <div class="mt-7 flex flex-wrap gap-3">
+
+            <span class="skill-pill">HTML5</span>
+            <span class="skill-pill">CSS3</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">Angular</span>
+            <span class="skill-pill">React</span>
+
+          </div>
+
+
+          <!-- Progress -->
+          <div class="mt-8">
+
+            <div class="mb-2 flex justify-between text-xs font-semibold">
+              <span class="text-[#60758f]">Frontend Development</span>
+              <span class="text-[#f07d36]">Currently Learning</span>
+            </div>
+
+            <div class="h-2 overflow-hidden rounded-full bg-[#d8dce2]">
+              <div
+                class="h-full w-[78%] rounded-full bg-[#f07d36]"
+              ></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- BACKEND -->
+      <div
+        class="scroll-stagger scroll-delay-2 group relative overflow-hidden rounded-[30px] bg-[#e8ebf0] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
+        style="box-shadow: 12px 12px 25px #c5c9d0, -12px -12px 25px #ffffff;"
+      >
+
+        <div
+          class="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#f07d36]/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+        ></div>
+
+        <div class="relative">
+
+          <div class="flex items-start justify-between">
+
+            <div
+              class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+            >
+              <svg lucideDatabase class="h-8 w-8"></svg>
+            </div>
+
+            <span
+              class="rounded-full bg-[#f07d36]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#f07d36]"
+            >
+              Backend
+            </span>
+
+          </div>
+
+
+          <h3 class="mt-7 text-2xl font-black text-[#202938]">
+            Backend Development
+          </h3>
+
+          <p class="mt-3 max-w-lg leading-7 text-[#60758f]">
+            Developing server-side applications, APIs, and database-driven
+            systems.
+          </p>
+
+
+          <div class="mt-7 flex flex-wrap gap-3">
+
+            <span class="skill-pill">PHP</span>
+            <span class="skill-pill">Laravel</span>
+            <span class="skill-pill">MySQL</span>
+            <span class="skill-pill">REST API</span>
+
+          </div>
+
+
+          <div class="mt-8">
+
+            <div class="mb-2 flex justify-between text-xs font-semibold">
+              <span class="text-[#60758f]">Backend Development</span>
+              <span class="text-[#f07d36]">Currently Learning</span>
+            </div>
+
+            <div class="h-2 overflow-hidden rounded-full bg-[#d8dce2]">
+              <div
+                class="h-full w-[72%] rounded-full bg-[#f07d36]"
+              ></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- DESIGN -->
+      <div
+        class="scroll-stagger scroll-delay-3 group relative overflow-hidden rounded-[30px] bg-[#e8ebf0] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
+        style="box-shadow: 12px 12px 25px #c5c9d0, -12px -12px 25px #ffffff;"
+      >
+
+        <div
+          class="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#f07d36]/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+        ></div>
+
+        <div class="relative">
+
+          <div class="flex items-start justify-between">
+
+            <div
+              class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+            >
+              <svg lucidePalette class="h-8 w-8"></svg>
+            </div>
+
+            <span
+              class="rounded-full bg-[#f07d36]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#f07d36]"
+            >
+              Creative
+            </span>
+
+          </div>
+
+
+          <h3 class="mt-7 text-2xl font-black text-[#202938]">
+            UI & Graphic Design
+          </h3>
+
+          <p class="mt-3 max-w-lg leading-7 text-[#60758f]">
+            Creating clean layouts, visual concepts, and user-friendly
+            interfaces with attention to detail.
+          </p>
+
+
+          <div class="mt-7 flex flex-wrap gap-3">
+
+            <span class="skill-pill">UI Design</span>
+            <span class="skill-pill">Graphic Design</span>
+            <span class="skill-pill">Visual Design</span>
+            <span class="skill-pill">Branding</span>
+
+          </div>
+
+
+          <div class="mt-8">
+
+            <div class="mb-2 flex justify-between text-xs font-semibold">
+              <span class="text-[#60758f]">Design & Creativity</span>
+              <span class="text-[#f07d36]">Active Skill</span>
+            </div>
+
+            <div class="h-2 overflow-hidden rounded-full bg-[#d8dce2]">
+              <div
+                class="h-full w-[82%] rounded-full bg-[#f07d36]"
+              ></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- TOOLS -->
+      <div
+        class="scroll-stagger scroll-delay-4 group relative overflow-hidden rounded-[30px] bg-[#e8ebf0] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
+        style="box-shadow: 12px 12px 25px #c5c9d0, -12px -12px 25px #ffffff;"
+      >
+
+        <div
+          class="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#f07d36]/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+        ></div>
+
+        <div class="relative">
+
+          <div class="flex items-start justify-between">
+
+            <div
+              class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+            >
+              <svg lucideCode2 class="h-8 w-8"></svg>
+            </div>
+
+            <span
+              class="rounded-full bg-[#f07d36]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#f07d36]"
+            >
+              Workflow
+            </span>
+
+          </div>
+
+
+          <h3 class="mt-7 text-2xl font-black text-[#202938]">
+            Tools & UI
+          </h3>
+
+          <p class="mt-3 max-w-lg leading-7 text-[#60758f]">
+            Tools and frameworks I use to build polished interfaces and
+            maintain efficient development workflows.
+          </p>
+
+
+          <div class="mt-7 flex flex-wrap gap-3">
+
+            <span class="skill-pill">Tailwind CSS</span>
+            <span class="skill-pill">daisyUI</span>
+            <span class="skill-pill">Git</span>
+            <span class="skill-pill">GitHub</span>
+            <span class="skill-pill">VS Code</span>
+
+          </div>
+
+
+          <div class="mt-8">
+
+            <div class="mb-2 flex justify-between text-xs font-semibold">
+              <span class="text-[#60758f]">Tools & Workflow</span>
+              <span class="text-[#f07d36]">Active Skill</span>
+            </div>
+
+            <div class="h-2 overflow-hidden rounded-full bg-[#d8dce2]">
+              <div
+                class="h-full w-[85%] rounded-full bg-[#f07d36]"
+              ></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Bottom Statement -->
+    <div class="scroll-scale mt-14 text-center">
+
+      <div
+        class="mx-auto max-w-3xl rounded-[28px] bg-[#e8ebf0] px-7 py-8 sm:px-10"
+        style="box-shadow: 10px 10px 22px #c5c9d0, -10px -10px 22px #ffffff;"
+      >
+
+        <div
+          class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#f07d36]/10 text-[#f07d36]"
+        >
+          <svg lucideArrowRight class="h-6 w-6"></svg>
+        </div>
+
+        <p class="text-lg font-semibold leading-8 text-[#526176]">
+          I continuously improve my skills by building real projects,
+          exploring new technologies, and turning ideas into
+          <span class="font-black text-[#f07d36]">
+            functional digital experiences.
+          </span>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 
     <!-- ========================================
