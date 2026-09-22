@@ -1,0 +1,237 @@
+<!-- ========================================
+     FLOATING CHATBOT
+======================================== -->
+
+<!-- CHAT WINDOW -->
+@if (isOpen) {
+
+  <div
+    class="chatbot-window fixed bottom-24 right-5 z-[9999] flex w-[calc(100vw-2rem)] max-w-[390px] flex-col overflow-hidden rounded-[28px] bg-[#e8ebf0]"
+  >
+
+    <!-- HEADER -->
+    <div
+      class="flex items-center justify-between bg-[#e8ebf0] px-5 py-4"
+      style="box-shadow: 0 5px 15px rgba(197, 201, 208, 0.45);"
+    >
+
+      <div class="flex items-center gap-3">
+
+        <div
+          class="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_8px_18px_rgba(240,125,54,0.3)]"
+        >
+          <svg lucideSparkles class="h-5 w-5"></svg>
+        </div>
+
+        <div>
+
+          <h3 class="text-sm font-black text-[#202938]">
+            Jessie Assistant
+          </h3>
+
+          <div class="mt-0.5 flex items-center gap-1.5">
+
+            <span
+              class="h-2 w-2 rounded-full bg-green-500"
+            ></span>
+
+            <span class="text-[11px] font-medium text-[#60758f]">
+              Online
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <button
+        type="button"
+        (click)="closeChat()"
+        aria-label="Close chatbot"
+        class="flex h-9 w-9 items-center justify-center rounded-xl text-[#60758f] transition-all duration-300 hover:bg-[#dfe3e8] hover:text-[#f07d36]"
+      >
+        <svg lucideX class="h-5 w-5"></svg>
+      </button>
+
+    </div>
+
+
+    <!-- MESSAGES -->
+    <div
+      class="chatbot-messages flex max-h-[390px] flex-1 flex-col gap-4 overflow-y-auto px-5 py-5"
+    >
+
+      @for (message of messages; track $index) {
+
+        @if (message.sender === 'bot') {
+
+          <div class="flex items-start gap-2.5">
+
+            <div
+              class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#f07d36]/10 text-[#f07d36]"
+            >
+              <svg lucideBot class="h-4 w-4"></svg>
+            </div>
+
+            <div
+              class="max-w-[82%] rounded-2xl rounded-tl-md bg-[#e8ebf0] px-4 py-3 text-sm leading-6 text-[#526176]"
+              style="box-shadow: 4px 4px 9px #c5c9d0, -4px -4px 9px #ffffff;"
+            >
+              {{ message.text }}
+            </div>
+
+          </div>
+
+        } @else {
+
+          <div class="flex justify-end">
+
+            <div
+              class="max-w-[82%] rounded-2xl rounded-tr-md bg-[#f07d36] px-4 py-3 text-sm leading-6 text-white shadow-[0_7px_16px_rgba(240,125,54,0.25)]"
+            >
+              {{ message.text }}
+            </div>
+
+          </div>
+
+        }
+
+      }
+
+    </div>
+
+
+    <!-- QUICK QUESTIONS -->
+    @if (messages.length === 1) {
+
+      <div class="px-5 pb-3">
+
+        <p
+          class="mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#8996a8]"
+        >
+          Quick Questions
+        </p>
+
+        <div class="flex flex-wrap gap-2">
+
+          @for (question of suggestedQuestions; track question) {
+
+            <button
+              type="button"
+              (click)="askQuestion(question)"
+              class="rounded-full bg-[#e8ebf0] px-3 py-2 text-[11px] font-semibold text-[#60758f] transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
+              style="box-shadow: 3px 3px 7px #c5c9d0, -3px -3px 7px #ffffff;"
+            >
+              {{ question }}
+            </button>
+
+          }
+
+        </div>
+
+      </div>
+
+    }
+
+
+    <!-- INPUT -->
+    <div class="border-t border-[#d6dae0] px-4 py-4">
+
+      <div
+        class="flex items-center gap-2 rounded-2xl bg-[#e8ebf0] p-2"
+        style="box-shadow: inset 4px 4px 8px #cdd1d7, inset -4px -4px 8px #ffffff;"
+      >
+
+        <input
+          type="text"
+          [(ngModel)]="userMessage"
+          (keyup.enter)="sendMessage()"
+          placeholder="Ask something about Jessie..."
+          class="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm text-[#30343b] outline-none placeholder:text-[#8a96a6]"
+        />
+
+        <button
+          type="button"
+          (click)="sendMessage()"
+          aria-label="Send message"
+          class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#f07d36] text-white shadow-[0_6px_14px_rgba(240,125,54,0.28)] transition-all duration-300 hover:scale-105 hover:bg-[#e66f29] active:scale-95 cursor-pointer"
+        >
+          <svg lucideSend class="h-4 w-4"></svg>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}
+
+
+<!-- ========================================
+     FLOATING CHAT BUTTON
+======================================== -->
+
+<div
+  class="fixed bottom-6 right-6 z-[10000]"
+>
+
+  <!-- Tooltip -->
+  <div
+    class="pointer-events-none absolute bottom-2 right-[72px] whitespace-nowrap rounded-xl bg-[#202938] px-3 py-2 text-xs font-semibold text-white opacity-0 shadow-lg transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+  >
+    Ask Jessie
+  </div>
+
+
+  <button
+    type="button"
+    (click)="toggleChat()"
+    [attr.aria-label]="isOpen ? 'Close chatbot' : 'Open chatbot'"
+    class="chatbot-button group relative flex h-16 w-16 items-center justify-center rounded-full bg-[#e8ebf0] text-[#f07d36] transition-all duration-300 hover:scale-110"
+  >
+
+    <!-- Orange Glow -->
+    <span
+      class="absolute inset-0 rounded-full bg-[#f07d36]/20 blur-xl transition-all duration-500 group-hover:bg-[#f07d36]/35"
+    ></span>
+
+
+    <!-- Outer Ring -->
+    <span
+      class="absolute inset-1 rounded-full border border-[#f07d36]/20"
+    ></span>
+
+
+    <!-- Icon -->
+    @if (!isOpen) {
+
+      <svg
+        lucideMessageCircle
+        class="relative z-10 h-7 w-7 transition-transform duration-300 group-hover:rotate-6"
+      ></svg>
+
+    } @else {
+
+      <svg
+        lucideX
+        class="relative z-10 h-7 w-7 transition-transform duration-300"
+      ></svg>
+
+    }
+
+
+    <!-- Online Dot -->
+    @if (!isOpen) {
+
+      <span
+        class="absolute right-1 top-1 z-20 h-4 w-4 rounded-full border-[3px] border-[#e8ebf0] bg-green-500"
+      ></span>
+
+    }
+
+  </button>
+
+</div>

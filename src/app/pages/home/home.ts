@@ -30,11 +30,13 @@ import {
   LucideSmartphone,
   LucideExternalLink
 } from '@lucide/angular';
+import { Chatbot } from '../chatbot/chatbot';
 
 @Component({
   selector: 'app-home',
 
   imports: [
+    Chatbot,
     LucideMail,
     LucideCode2,
     LucideUserRound,
