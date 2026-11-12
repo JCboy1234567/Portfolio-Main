@@ -1157,7 +1157,7 @@
                   </span>
                 }
               </div>
-              <div class="core-stack-group" role="list" aria-hidden="true">
+              <div class="core-stack-group cursor-default" role="list" aria-hidden="true">
                 @for (technology of coreStack; track 'copy-' + technology.name) {
                   <span class="group inline-flex shrink-0 items-center gap-2.5 px-3 py-2.5 text-sm font-bold text-[#526176] transition hover:-translate-y-0.5 hover:text-[#f07d36] sm:text-base" role="listitem">
                     <img [src]="'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/' + technology.icon + '/' + technology.icon + '-original.svg'" alt="" width="32" height="32" class="h-7 w-7 shrink-0 object-contain transition-transform group-hover:scale-110 sm:h-8 sm:w-8" loading="lazy" decoding="async" (error)="hideBrokenTechIcon($event)">

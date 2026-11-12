@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+html,
+body,
+app-root {
+  width: 100%;
+  max-width: 100%;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
 body, section, main, header, footer {
   background-color: #e8ebf0;
   background-image: linear-gradient(to bottom, transparent 29px, rgba(203, 213, 224, 0.661) 30px);
@@ -67,6 +79,11 @@ html.dark-mode .service-card {
 html.dark-mode .skill-card:hover,
 html.dark-mode .service-card:hover {
   box-shadow: 14px 22px 42px rgba(0, 0, 0, 0.48), -5px -5px 18px rgba(255, 255, 255, 0.035) !important;
+}
+
+html.dark-mode .blog-modal-card {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  background: linear-gradient(145deg, #252d3a 0%, #1d2430 100%) !important;
 }
 
 html.dark-mode .skill-pill,
