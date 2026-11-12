@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-[#e8ebf0] text-[#30343b]">
+<div class="min-h-screen bg-[#e8ebf0] text-[#30343b] transition-colors duration-300">
 
   <!-- ==========================================
        NAVBAR
@@ -33,7 +33,7 @@
               -6px -6px 12px #ffffff;
           "
         >
-          <img src="/images/Formal-pic.png" alt="">
+          <img [src]="darkMode ? '/images/dark-profile.jpg' : '/images/Formal-pic.png'" alt="">
         </div>
 
 
@@ -250,6 +250,21 @@
     <div
       class="navbar-end gap-3"
     >
+
+      <button
+        type="button"
+        class="grid h-11 w-11 place-items-center rounded-xl bg-[#e8ebf0] text-[#687386] transition-all duration-300 hover:text-[#f07d36]"
+        style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff"
+        (click)="toggleTheme()"
+        [attr.aria-label]="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+        [attr.title]="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+      >
+        @if (darkMode) {
+          <svg lucideSun class="h-5 w-5"></svg>
+        } @else {
+          <svg lucideMoon class="h-5 w-5"></svg>
+        }
+      </button>
 
       <a
         href="#contact"
@@ -767,7 +782,7 @@
           >
 
             <img
-              src="/images/Formal-pic.png"
+              [src]="darkMode ? '/images/dark-profile.jpg' : '/images/Formal-pic.png'"
               alt="Jessie - Web Developer"
               class="block w-full object-cover"
             >
@@ -1109,15 +1124,15 @@
          CORE STACK
     ======================================== -->
 
-    <div class="scroll-scale mt-14">
+    <div class="scroll-scale mt-8 w-full sm:mt-10">
 
       <div
-        class="skills-stack rounded-[30px] border border-white/70 bg-white/45 p-6 backdrop-blur-sm sm:p-8"
+        class="skills-stack w-full rounded-[26px] border border-white/70 bg-white/45 px-4 py-5 backdrop-blur-sm sm:px-6 sm:py-6 lg:px-7"
       >
 
-        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div class="flex w-full min-w-0 flex-col gap-4 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
 
-          <div>
+          <div class="w-full lg:w-64 lg:shrink-0">
             <p
               class="text-xs font-bold uppercase tracking-[0.22em] text-[#f07d36]"
             >
@@ -1125,27 +1140,27 @@
             </p>
 
             <h3
-              class="mt-2 text-2xl font-black text-[#202938]"
+              class="mt-1.5 text-xl font-black text-[#202938] sm:text-2xl"
             >
               My Development Toolkit
             </h3>
           </div>
 
 
-          <div class="core-stack-marquee min-w-0 flex-1" aria-label="Core technologies, slow-moving list that pauses on hover">
+          <div class="core-stack-marquee w-full min-w-0 flex-1 px-1 sm:px-2" aria-label="Core technologies, slow-moving list that pauses on hover">
             <div class="core-stack-track">
-              <div class="core-stack-group" role="list">
+              <div class="core-stack-group cursor-default" role="list">
                 @for (technology of coreStack; track technology.name) {
-                  <span class="inline-flex shrink-0 items-center gap-2 rounded-2xl border border-white/80 bg-[#e8ebf0] px-4 py-3 text-sm font-bold text-[#526176] shadow-[5px_5px_10px_#c5c9d0,-5px_-5px_10px_#ffffff]" role="listitem">
-                    <img [src]="'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/' + technology.icon + '/' + technology.icon + '-original.svg'" [alt]="technology.name + ' logo'" class="h-7 w-7 shrink-0 object-contain" loading="lazy" decoding="async" (error)="hideBrokenTechIcon($event)">
+                  <span class="group inline-flex shrink-0 items-center gap-2.5 px-3 py-2.5 text-sm font-bold text-[#526176] transition hover:-translate-y-0.5 hover:text-[#f07d36] sm:text-base" role="listitem">
+                    <img [src]="'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/' + technology.icon + '/' + technology.icon + '-original.svg'" [alt]="technology.name + ' logo'" width="32" height="32" class="h-7 w-7 shrink-0 object-contain transition-transform group-hover:scale-110 sm:h-8 sm:w-8" loading="lazy" decoding="async" (error)="hideBrokenTechIcon($event)">
                     {{ technology.name }}
                   </span>
                 }
               </div>
-              <div class="core-stack-group" role="list" aria-hidden="true">
+              <div class="core-stack-group cursor-default" role="list" aria-hidden="true">
                 @for (technology of coreStack; track 'copy-' + technology.name) {
-                  <span class="inline-flex shrink-0 items-center gap-2 rounded-2xl border border-white/80 bg-[#e8ebf0] px-4 py-3 text-sm font-bold text-[#526176] shadow-[5px_5px_10px_#c5c9d0,-5px_-5px_10px_#ffffff]" role="listitem">
-                    <img [src]="'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/' + technology.icon + '/' + technology.icon + '-original.svg'" alt="" class="h-7 w-7 shrink-0 object-contain" loading="lazy" decoding="async" (error)="hideBrokenTechIcon($event)">
+                  <span class="group inline-flex shrink-0 items-center gap-2.5 px-3 py-2.5 text-sm font-bold text-[#526176] transition hover:-translate-y-0.5 hover:text-[#f07d36] sm:text-base" role="listitem">
+                    <img [src]="'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/' + technology.icon + '/' + technology.icon + '-original.svg'" alt="" width="32" height="32" class="h-7 w-7 shrink-0 object-contain transition-transform group-hover:scale-110 sm:h-8 sm:w-8" loading="lazy" decoding="async" (error)="hideBrokenTechIcon($event)">
                     {{ technology.name }}
                   </span>
                 }

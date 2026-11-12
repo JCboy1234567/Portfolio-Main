@@ -1,15 +1,106 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+html,
+body,
+app-root {
+  width: 100%;
+  max-width: 100%;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
 body, section, main, header, footer {
   background-color: #e8ebf0;
   background-image: linear-gradient(to bottom, transparent 29px, rgba(203, 213, 224, 0.661) 30px);
   background-size: 100% 30px;
 }
 
+html.dark-mode,
+html.dark-mode body,
+html.dark-mode section,
+html.dark-mode main,
+html.dark-mode header,
+html.dark-mode footer {
+  color: #e5e7eb;
+  background-color: #171b24 !important;
+  background-image: linear-gradient(to bottom, transparent 29px, rgba(255, 255, 255, 0.045) 30px) !important;
+  color-scheme: dark;
+}
+
+html.dark-mode [class*="bg-[#e8ebf0]"],
+html.dark-mode [class*="bg-[#edf0f4]"],
+html.dark-mode [class*="bg-[#e1e4e9]"],
+html.dark-mode [class*="bg-white"] {
+  background-color: #222936 !important;
+}
+
+html.dark-mode [class*="text-[#30343b]"],
+html.dark-mode [class*="text-[#202938]"],
+html.dark-mode [class*="text-[#1f2937]"],
+html.dark-mode [class*="text-[#374151]"],
+html.dark-mode [class*="text-[#3f4a5a]"],
+html.dark-mode [class*="text-[#526176]"],
+html.dark-mode [class*="text-[#60758f]"],
+html.dark-mode [class*="text-[#687386]"],
+html.dark-mode [class*="text-[#7a8797]"],
+html.dark-mode [class*="text-[#7b8794]"],
+html.dark-mode [class*="text-[#858c96]"],
+html.dark-mode [class*="text-[#8792a0]"],
+html.dark-mode [class*="text-[#9aa1ac]"],
+html.dark-mode [class*="text-[#a0a8b3]"] {
+  color: #d5dbe5 !important;
+}
+
+html.dark-mode [style*="box-shadow"] {
+  box-shadow: 5px 5px 12px #11151c, -4px -4px 10px #2b3342 !important;
+}
+
+html.dark-mode [class*="shadow-"] {
+  --tw-shadow: 0 12px 28px rgba(0, 0, 0, 0.38) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.38) !important;
+}
+
+html.dark-mode .tech-logo {
+  background: rgba(34, 41, 54, 0.96) !important;
+  box-shadow: 6px 7px 16px #10141b, -4px -4px 12px #2a3240 !important;
+}
+
+html.dark-mode .skill-card,
+html.dark-mode .service-card {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  background: linear-gradient(145deg, #252d3a 0%, #1d2430 100%) !important;
+  box-shadow: 10px 14px 32px rgba(0, 0, 0, 0.34), -5px -5px 16px rgba(255, 255, 255, 0.025) !important;
+}
+
+html.dark-mode .skill-card:hover,
+html.dark-mode .service-card:hover {
+  box-shadow: 14px 22px 42px rgba(0, 0, 0, 0.48), -5px -5px 18px rgba(255, 255, 255, 0.035) !important;
+}
+
+html.dark-mode .blog-modal-card {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  background: linear-gradient(145deg, #252d3a 0%, #1d2430 100%) !important;
+}
+
+html.dark-mode .skill-pill,
+html.dark-mode .service-tag {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: #202735;
+  color: #c5cedb;
+  box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.3), -3px -3px 9px rgba(255, 255, 255, 0.025);
+}
+
+html.dark-mode .core-stack-group > span:hover {
+  filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.72)) drop-shadow(0 0 6px rgba(240, 125, 54, 0.18));
+}
+
 .core-stack-marquee {
   overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 2%, #000 98%, transparent);
 }
 
 .core-stack-track {
@@ -20,8 +111,8 @@ body, section, main, header, footer {
 
 .core-stack-group {
   display: flex;
-  gap: 0.75rem;
-  padding-right: 0.75rem;
+  gap: 1rem;
+  padding-right: 1rem;
 }
 
 .core-stack-marquee:hover .core-stack-track,
