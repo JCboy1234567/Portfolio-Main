@@ -225,6 +225,7 @@ export class Home implements AfterViewInit, OnDestroy {
 
   toggleTheme(): void {
     this.darkMode = !this.darkMode;
+    this.applyTheme();
   }
 
 
@@ -308,6 +309,9 @@ export class Home implements AfterViewInit, OnDestroy {
       return;
     }
 
+    this.darkMode = localStorage.getItem('portfolio-theme') === 'dark';
+    this.applyTheme();
+
 
     /*
       Wait until Angular finishes rendering
@@ -320,6 +324,17 @@ export class Home implements AfterViewInit, OnDestroy {
 
     });
 
+  }
+
+  private applyTheme(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    document.documentElement.classList.toggle('dark-mode', this.darkMode);
+    localStorage.setItem('portfolio-theme', this.darkMode ? 'dark' : 'light');
+    const favicon = document.querySelector<HTMLLinkElement>('link[rel~="icon"]');
+    if (favicon) {
+      favicon.href = this.darkMode ? '/images/dark-profile.jpg' : '/images/Formal-pic.png';
+      favicon.type = this.darkMode ? 'image/jpeg' : 'image/png';
+    }
   }
 
 
