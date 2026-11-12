@@ -1,2 +1,49 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+body, section, main, header, footer {
+  background-color: #e8ebf0;
+  background-image: linear-gradient(to bottom, transparent 29px, rgba(203, 213, 224, 0.661) 30px);
+  background-size: 100% 30px;
+}
+
+.core-stack-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+.core-stack-track {
+  display: flex;
+  width: max-content;
+  animation: core-stack-slide 48s linear infinite;
+}
+
+.core-stack-group {
+  display: flex;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.core-stack-marquee:hover .core-stack-track,
+.core-stack-marquee:focus-within .core-stack-track {
+  animation-play-state: paused;
+}
+
+@keyframes core-stack-slide {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .core-stack-marquee {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .core-stack-track {
+    animation: none;
+  }
+
+  .core-stack-group[aria-hidden="true"] {
+    display: none;
+  }
+}

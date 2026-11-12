@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 
 import {
   LucideMessageCircle,
   LucideX,
   LucideSend,
   LucideSparkles,
-  LucideUserRound,
   LucideBot
 } from '@lucide/angular';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +22,6 @@ interface ChatMessage {
     LucideX,
     LucideSend,
     LucideSparkles,
-    LucideUserRound,
     LucideBot
   ],
   templateUrl: './chatbot.html',
@@ -31,7 +29,13 @@ interface ChatMessage {
 })
 export class Chatbot {
 
+  constructor(private readonly cdr: ChangeDetectorRef) {}
+
+  @ViewChild('messageList') private messageList?: ElementRef<HTMLDivElement>;
+
   isOpen = false;
+
+  isReplyPending = false;
 
   userMessage = '';
 
@@ -60,7 +64,7 @@ export class Chatbot {
   askQuestion(question: string): void {
     const trimmedQuestion = question.trim();
 
-    if (!trimmedQuestion) return;
+    if (!trimmedQuestion || this.isReplyPending) return;
 
     this.messages.push({
       sender: 'user',
@@ -68,12 +72,18 @@ export class Chatbot {
     });
 
     this.userMessage = '';
+    this.isReplyPending = true;
+    this.cdr.detectChanges();
+    this.scrollMessagesToBottom();
 
     setTimeout(() => {
       this.messages.push({
         sender: 'bot',
         text: this.generateResponse(trimmedQuestion)
       });
+      this.isReplyPending = false;
+      this.cdr.detectChanges();
+      this.scrollMessagesToBottom();
     }, 400);
   }
 
@@ -81,121 +91,85 @@ export class Chatbot {
     this.askQuestion(this.userMessage);
   }
 
+  private scrollMessagesToBottom(): void {
+    requestAnimationFrame(() => {
+      const list = this.messageList?.nativeElement;
+      list?.scrollTo({ top: list.scrollHeight, behavior: 'smooth' });
+    });
+  }
+
   private generateResponse(question: string): string {
+    const q = question.toLowerCase().replace(/[^a-z0-9+# ]/g, ' ').replace(/\s+/g, ' ').trim();
+    const has = (...terms: string[]) => terms.some((term) => q.includes(term));
 
-    const q = question.toLowerCase();
-
-    if (
-      q.includes('about jessie') ||
-      q.includes('who is jessie') ||
-      q.includes('tell me about jessie') ||
-      q.includes('your developer')
-    ) {
-      return "Jessie is a web developer focused on building modern, responsive, and user-friendly web applications. He works with technologies such as Angular, Laravel, PHP, MySQL, JavaScript, and Tailwind CSS.";
+    if (has('attendance', 'attendance management')) {
+      return "The Attendance Management System is a web app for organizing scholars, batches, programs, and attendance. Its listed stack is Angular, Laravel, and MySQL. Open its project case study for the highlights.";
     }
 
-    if (
-      q.includes('skill') ||
-      q.includes('technology') ||
-      q.includes('technologies') ||
-      q.includes('stack')
-    ) {
-      return "Jessie's current technology stack includes HTML, CSS, JavaScript, Angular, React, PHP, Laravel, MySQL, Tailwind CSS, daisyUI, Git, and GitHub. He also has skills in UI, graphic, and visual design.";
+    if (has('library', 'book management')) {
+      return "The Library Management System includes student records, book create/read/update/delete features, search, and database integration. The listed tools are PHP, MySQL, and AJAX.";
     }
 
-    if (
-      q.includes('project') ||
-      q.includes('projects') ||
-      q.includes('built')
-    ) {
-      return "Jessie has worked on web development projects involving Angular, Laravel, PHP, MySQL, responsive interfaces, dashboards, and management systems. You can explore the Projects section of this portfolio to see his work.";
+    if (has('sakaytantiya')) {
+      return "Sakaytantiya is a web application project focused on transport management and commuting services. Its listed stack is Angular, Laravel, and MySQL.";
     }
 
-    if (
-      q.includes('service') ||
-      q.includes('services') ||
-      q.includes('offer')
-    ) {
-      return "Jessie can work on responsive web development, frontend interfaces, backend development, database-driven applications, UI design, and graphic design.";
+    if (has('portfolio')) {
+      return "Jessie's portfolio brings together his web development work, visual design, projects, services, and contact information. It was built with Angular, Tailwind CSS, and daisyUI.";
     }
 
-    if (
-      q.includes('frontend') ||
-      q.includes('front end')
-    ) {
-      return "For frontend development, Jessie works with HTML, CSS, JavaScript, Angular, React, Tailwind CSS, and daisyUI to create responsive and interactive interfaces.";
+    if (has('certificate', 'certification', 'tesda', 'nc iii', 'national certificate')) {
+      return "Jessie has National Certificate III credentials in Web Development and Visual Graphic Design. You can view them in the Certifications section.";
     }
 
-    if (
-      q.includes('backend') ||
-      q.includes('back end')
-    ) {
-      return "For backend development, Jessie works with PHP, Laravel, MySQL, and API-based applications.";
+    if (has('where is jessie', 'where is he', 'location', 'based in')) {
+      return "Jessie is based in Tagum City, Philippines.";
     }
 
-    if (
-      q.includes('design') ||
-      q.includes('graphic') ||
-      q.includes('ui')
-    ) {
-      return "Jessie also has experience in UI Design, Graphic Design, Visual Design, and creating clean layouts for digital interfaces.";
+    if (has('contact', 'hire', 'email', 'reach', 'availability', 'phone')) {
+      return "You can use the Contact form or email Jessie at jessiegamulo1023@gmail.com. Share what you want to build, your goals, and any timeline you have in mind.";
     }
 
-    if (
-      q.includes('contact') ||
-      q.includes('hire') ||
-      q.includes('email') ||
-      q.includes('reach')
-    ) {
-      return "You can contact Jessie through the Contact section of this portfolio. Feel free to send a message about a project, collaboration, or freelance opportunity.";
+    if (has('price', 'pricing', 'cost', 'budget', 'rate', 'quote')) {
+      return "There isn't a set price list in the portfolio. Send Jessie a short project brief through the Contact form and he can discuss the scope with you.";
     }
 
-    if (
-      q.includes('angular')
-    ) {
-      return "Angular is one of Jessie's current frontend technologies. He uses it to build structured, responsive, and interactive web applications.";
+    if (has('service', 'services', 'offer', 'what can you do')) {
+      return "Jessie offers web development, UI and visual design, and backend/database work. Use a service card's ‘Discuss this service’ link to start a message about what you need.";
     }
 
-    if (
-      q.includes('laravel')
-    ) {
-      return "Laravel is part of Jessie's backend stack. He uses it together with PHP and MySQL when building database-driven web applications and APIs.";
+    if (has('project', 'projects', 'built')) {
+      return "The portfolio features an Attendance Management System, a Library Management System, a Personal Portfolio, and Sakaytantiya. Each project card opens a case study with its overview, highlights, and tools.";
     }
 
-    if (
-      q.includes('php')
-    ) {
-      return "Jessie uses PHP for backend development, particularly together with Laravel and MySQL.";
+    if (has('frontend', 'front end', 'angular', 'react', 'html', 'css', 'javascript')) {
+      return "Jessie's frontend toolkit includes HTML, CSS, JavaScript, Angular, React, Tailwind CSS, and daisyUI. He uses these to build responsive and interactive interfaces.";
     }
 
-    if (
-      q.includes('mysql') ||
-      q.includes('database')
-    ) {
-      return "Jessie uses MySQL for storing and managing application data in database-driven projects.";
+    if (has('backend', 'back end', 'laravel', 'php', 'mysql', 'database', 'api')) {
+      return "Jessie's backend toolkit includes PHP, Laravel, MySQL, and API-based applications. The portfolio projects show examples of database-driven features.";
     }
 
-    if (
-      q.includes('tailwind') ||
-      q.includes('daisyui')
-    ) {
-      return "Jessie uses Tailwind CSS and daisyUI to create clean, responsive, and modern user interfaces while keeping the styling efficient and consistent.";
+    if (has('design', 'graphic', 'visual', 'ui')) {
+      return "Jessie works with UI, graphic, and visual design, with a focus on clear layouts, visual hierarchy, and responsive interfaces. He also holds a National Certificate III in Visual Graphic Design.";
     }
 
-    if (
-      q.includes('hello') ||
-      q.includes('hi') ||
-      q.includes('hey')
-    ) {
-      return "Hello! 👋 Nice to meet you. I'm Jessie's portfolio assistant. You can ask me about his skills, projects, services, or experience.";
+    if (has('skill', 'skills', 'technology', 'technologies', 'stack')) {
+      return "Jessie's toolkit includes HTML, CSS, JavaScript, Angular, React, PHP, Laravel, MySQL, Tailwind CSS, daisyUI, Git, and GitHub, along with UI and visual design skills.";
     }
 
-    if (
-      q.includes('thank')
-    ) {
-      return "You're welcome! 😊 If you'd like to know more about Jessie, feel free to ask another question.";
+    if (has('experience', 'work experience', 'background', 'about jessie', 'who is jessie', 'tell me about jessie')) {
+      return "Jessie is a web developer and visual graphic designer based in Tagum City, Philippines. His portfolio highlights hands-on web projects and National Certificate III credentials in Web Development and Visual Graphic Design.";
     }
 
-    return "I can help you learn more about Jessie. Try asking about his skills, projects, services, frontend development, backend development, design experience, or how to contact him.";
+    if (/^(hi|hello|hey|good morning|good afternoon)\b/.test(q)) {
+      return "Hi! 👋 Ask me about Jessie's projects, skills, certificates, services, or how to start a project inquiry.";
+    }
+
+    if (has('thank', 'thanks')) {
+      return "You're welcome! 😊 If you're interested in working together, I can help you find the Contact section.";
+    }
+
+    return "I can answer questions using details from Jessie's portfolio. Try asking about a project by name, his skills or certificates, available services, pricing, or how to contact him.";
   }
 }
