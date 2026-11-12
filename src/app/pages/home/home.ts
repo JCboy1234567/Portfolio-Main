@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   Inject,
@@ -28,9 +29,29 @@ import {
   LucideDatabase,
   LucideGlobe,
   LucideSmartphone,
-  LucideExternalLink
+  LucideExternalLink,
+  LucideCheckCircle2
 } from '@lucide/angular';
 import { Chatbot } from '../chatbot/chatbot';
+
+interface BlogPost {
+  category: string;
+  date: string;
+  readTime: string;
+  title: string;
+  excerpt: string;
+  body: string[];
+  accent: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+interface ProjectCaseStudy {
+  title: string;
+  overview: string;
+  highlights: string[];
+  stack: string[];
+}
 
 @Component({
   selector: 'app-home',
@@ -55,7 +76,8 @@ import { Chatbot } from '../chatbot/chatbot';
     LucideDatabase,
     LucideGlobe,
     LucideSmartphone,
-    LucideExternalLink
+    LucideExternalLink,
+    LucideCheckCircle2
   ],
 
   templateUrl: './home.html',
@@ -72,13 +94,113 @@ export class Home implements AfterViewInit, OnDestroy {
   mouseX = -300;
   mouseY= -300;
 
-  private scrollHandler?: () => void;
+  isSubmitting = false;
+  showSuccessModal = false;
+
+  readonly coreStack = [
+    { name: 'Angular', icon: 'angular' },
+    { name: 'Laravel', icon: 'laravel' },
+    { name: 'PHP', icon: 'php' },
+    { name: 'MySQL', icon: 'mysql' },
+    { name: 'Tailwind CSS', icon: 'tailwindcss' },
+    { name: 'HTML', icon: 'html5' },
+    { name: 'CSS', icon: 'css3' },
+    { name: 'JavaScript', icon: 'javascript' },
+    { name: 'Java', icon: 'java' },
+    { name: 'Postman', icon: 'postman' },
+    { name: 'Figma', icon: 'figma' }
+  ];
+
+  selectedBlogPost: BlogPost | null = null;
+
+  selectedProjectCaseStudy: ProjectCaseStudy | null = null;
+
+  inquiryMessage = '';
+
+  readonly projectCaseStudies: ProjectCaseStudy[] = [
+    {
+      title: 'Attendance Management System',
+      overview: 'A web application for organizing scholars, batches, programs, and attendance records.',
+      highlights: ['Scholar and batch organization', 'Program records', 'Attendance management'],
+      stack: ['Angular', 'Laravel', 'MySQL']
+    },
+    {
+      title: 'Library Management System',
+      overview: 'A library tool for managing student records and books, with search and database integration.',
+      highlights: ['Student records', 'Book create, read, update, and delete flows', 'Search'],
+      stack: ['PHP', 'MySQL', 'AJAX']
+    },
+    {
+      title: 'Personal Portfolio',
+      overview: 'A responsive portfolio that brings together my development work, visual design, and projects.',
+      highlights: ['Skills and project showcase', 'Responsive page sections', 'Contact and service information'],
+      stack: ['Angular', 'Tailwind CSS', 'daisyUI']
+    },
+    {
+      title: 'Sakaytantiya',
+      overview: 'A web application concept for transport management and commuting services.',
+      highlights: ['Transport management focus', 'Commuting service concept'],
+      stack: ['Angular', 'Laravel', 'MySQL']
+    }
+  ];
+
+  readonly blogPosts: BlogPost[] = [
+    {
+      category: 'Web Development',
+      date: 'Learning notes',
+      readTime: '4 min read',
+      title: 'What I learned building with Angular',
+      excerpt: 'A few lessons from turning a growing set of ideas into a component based portfolio.',
+      body: [
+        'Building a portfolio is a useful way to practice the full frontend workflow: planning a page, composing reusable sections, and making the result work across screen sizes.',
+        'I am learning to keep each section focused, use clear names for UI state, and check how the page behaves on smaller screens as I build.',
+        'This is an evolving learning note. I will add more detailed writeups as I document projects and the decisions behind them.'
+      ],
+      accent: 'blog-art-angular',
+      image: '/images/blog1.png',
+      imageAlt: 'Web development article cover'
+    },
+    {
+      category: 'Project Journal',
+      date: 'Learning milestone',
+      readTime: '2 min read',
+      title: 'A milestone in my learning journey: National Certificates',
+      excerpt: 'Reflecting on earning NC III certificates in Web Development and Visual Graphic Design.',
+      body: [
+        'Earning my National Certificates in Web Development NC III and Visual Graphic Design NC III is an important milestone in my journey. They represent the time I have spent learning how to build for the web and communicate ideas through visual design.',
+        'My Web Development training strengthened my understanding of creating web applications and working with web technologies. Visual Graphic Design helped me practice composition, digital design, and creating graphics for different projects.',
+        'I’m proud of how far I’ve come, and I’m looking forward to applying these skills in more projects while continuing to learn.'
+      ],
+      accent: 'blog-art-planning',
+      image: '/images/blog2.jpg',
+      imageAlt: 'National Certificates project journal cover'
+    },
+    {
+      category: 'Design',
+      date: 'Design notes',
+      readTime: '3 min read',
+      title: 'Small details that make a page feel polished',
+      excerpt: 'Spacing, contrast, and responsive checks can make a bigger difference than extra effects.',
+      body: [
+        'A page feels easier to use when its spacing is consistent and its headings make the content easy to scan. I try to establish a small set of sizes and colors before adding decoration.',
+        'I also check contrast and tap targets, then resize the browser to see whether the layout still reads naturally on a phone.',
+        'Polish comes from the way these small choices work together, not from adding motion everywhere.'
+      ],
+      accent: 'blog-art-design',
+      image: '/images/blog3.png',
+      imageAlt: 'Design article cover'
+    }
+  ];
+
+  private animationScrollHandler?: () => void;
+  private activeSectionScrollHandler?: () => void;
 
   private animationObserver?: IntersectionObserver;
 
 
   constructor(
     private elementRef: ElementRef,
+    private cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platformId: object
   ) {}
 
@@ -261,16 +383,6 @@ export class Home implements AfterViewInit, OnDestroy {
 
     elements.forEach((element) => {
 
-      /*
-        Already animated?
-        No need to calculate again.
-      */
-
-      if (element.classList.contains('show')) {
-        return;
-      }
-
-
       const rect =
         element.getBoundingClientRect();
 
@@ -291,6 +403,10 @@ export class Home implements AfterViewInit, OnDestroy {
       ) {
 
         element.classList.add('show');
+
+      } else {
+
+        element.classList.remove('show');
 
       }
 
@@ -315,7 +431,7 @@ export class Home implements AfterViewInit, OnDestroy {
     Scroll listener
   */
 
-  this.scrollHandler = (): void => {
+  this.animationScrollHandler = (): void => {
 
     requestAnimationFrame(() => {
 
@@ -328,7 +444,7 @@ export class Home implements AfterViewInit, OnDestroy {
 
   window.addEventListener(
     'scroll',
-    this.scrollHandler,
+    this.animationScrollHandler,
     {
       passive: true
     }
@@ -350,7 +466,7 @@ export class Home implements AfterViewInit, OnDestroy {
     const sections =
       Array.from(
         document.querySelectorAll<HTMLElement>(
-          '#home, #about, #skills, #projects, #services, #contact'
+          '#home, #about, #skills, #projects, #blog, #services, #contact'
         )
       );
 
@@ -371,7 +487,7 @@ export class Home implements AfterViewInit, OnDestroy {
       Listen to browser scrolling
     */
 
-    this.scrollHandler = () => {
+    this.activeSectionScrollHandler = () => {
 
       this.updateActiveSection(
         sections
@@ -382,7 +498,7 @@ export class Home implements AfterViewInit, OnDestroy {
 
     window.addEventListener(
       'scroll',
-      this.scrollHandler,
+      this.activeSectionScrollHandler,
       {
         passive: true
       }
@@ -436,7 +552,7 @@ export class Home implements AfterViewInit, OnDestroy {
     for (const section of sections) {
 
       const sectionTop =
-        section.offsetTop;
+        section.getBoundingClientRect().top + window.scrollY;
 
 
       if (
@@ -467,16 +583,14 @@ export class Home implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
 
-    if (
-      this.scrollHandler &&
-      isPlatformBrowser(this.platformId)
-    ) {
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.animationScrollHandler) {
+        window.removeEventListener('scroll', this.animationScrollHandler);
+      }
 
-      window.removeEventListener(
-        'scroll',
-        this.scrollHandler
-      );
-
+      if (this.activeSectionScrollHandler) {
+        window.removeEventListener('scroll', this.activeSectionScrollHandler);
+      }
     }
 
 
@@ -499,5 +613,73 @@ export class Home implements AfterViewInit, OnDestroy {
     event.clientY - rect.top;
 
 }
+
+  hideBrokenTechIcon(event: Event): void {
+    (event.currentTarget as HTMLImageElement).hidden = true;
+  }
+
+  /* ========================================
+     CONTACT FORM SUBMISSION
+  ======================================== */
+
+  submitContactForm(event: Event): void {
+    event.preventDefault();
+
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    // Show success modal & reset immediately
+    this.isSubmitting = false;
+    this.showSuccessModal = true;
+    this.cdr.detectChanges();
+
+    // Fire email submission in background without blocking UI
+    fetch('https://formsubmit.co/ajax/jessiegamulo1023@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json'
+      },
+      body: formData
+    }).catch((err) => console.log('Email delivery background info:', err));
+
+    form.reset();
+    this.inquiryMessage = '';
+    this.cdr.detectChanges();
+  }
+
+  closeSuccessModal(): void {
+    this.showSuccessModal = false;
+  }
+
+  openBlogPost(post: BlogPost): void {
+    this.selectedBlogPost = post;
+  }
+
+  closeBlogPost(): void {
+    this.selectedBlogPost = null;
+  }
+
+  openProjectCaseStudy(project: ProjectCaseStudy): void {
+    this.selectedProjectCaseStudy = project;
+  }
+
+  closeProjectCaseStudy(): void {
+    this.selectedProjectCaseStudy = null;
+  }
+
+  startProjectInquiry(projectName: string, event: Event): void {
+    this.closeProjectCaseStudy();
+    this.inquiryMessage = `Hi Jessie, I'd like to discuss ${projectName}. Here's what I have in mind: `;
+    this.scrollToSection('contact', event);
+  }
+
+  startServiceInquiry(serviceName: string, event: Event): void {
+    this.inquiryMessage = `Hi Jessie, I'm interested in your ${serviceName} service. Here's what I need: `;
+    this.scrollToSection('contact', event);
+  }
+
+  updateInquiryMessage(event: Event): void {
+    this.inquiryMessage = (event.target as HTMLTextAreaElement).value;
+  }
 
 }

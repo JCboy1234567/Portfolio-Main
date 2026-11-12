@@ -33,10 +33,7 @@
               -6px -6px 12px #ffffff;
           "
         >
-          <svg
-            lucideCode2
-            class="h-5 w-5"
-          ></svg>
+          <img src="/images/Formal-pic.png" alt="">
         </div>
 
 
@@ -82,6 +79,7 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'home'"
           [class.text-[#687386]]="activeSection !== 'home'"
+          [attr.aria-current]="activeSection === 'home' ? 'location' : null"
         >
 
           Home
@@ -105,6 +103,7 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'about'"
           [class.text-[#687386]]="activeSection !== 'about'"
+          [attr.aria-current]="activeSection === 'about' ? 'location' : null"
         >
 
           About
@@ -128,6 +127,7 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'skills'"
           [class.text-[#687386]]="activeSection !== 'skills'"
+          [attr.aria-current]="activeSection === 'skills' ? 'location' : null"
         >
 
           Skills
@@ -151,11 +151,36 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'projects'"
           [class.text-[#687386]]="activeSection !== 'projects'"
+          [attr.aria-current]="activeSection === 'projects' ? 'location' : null"
         >
 
           Projects
 
           @if (activeSection === 'projects') {
+
+            <span
+              class="absolute bottom-0 left-1/2 h-1 w-5 -translate-x-1/2 rounded-full bg-[#f07d36] shadow-[0_0_8px_rgba(240,125,54,0.35)]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- BLOG -->
+
+        <a
+          href="#blog"
+          (click)="scrollToSection('blog', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'blog'"
+          [class.text-[#687386]]="activeSection !== 'blog'"
+          [attr.aria-current]="activeSection === 'blog' ? 'location' : null"
+        >
+
+          Blog
+
+          @if (activeSection === 'blog') {
 
             <span
               class="absolute bottom-0 left-1/2 h-1 w-5 -translate-x-1/2 rounded-full bg-[#f07d36] shadow-[0_0_8px_rgba(240,125,54,0.35)]"
@@ -174,6 +199,7 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'services'"
           [class.text-[#687386]]="activeSection !== 'services'"
+          [attr.aria-current]="activeSection === 'services' ? 'location' : null"
         >
 
           Services
@@ -197,6 +223,7 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'contact'"
           [class.text-[#687386]]="activeSection !== 'contact'"
+          [attr.aria-current]="activeSection === 'contact' ? 'location' : null"
         >
 
           Contact
@@ -305,6 +332,7 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'home'"
           [class.text-[#687386]]="activeSection !== 'home'"
+          [attr.aria-current]="activeSection === 'home' ? 'location' : null"
         >
 
           Home
@@ -328,6 +356,7 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'about'"
           [class.text-[#687386]]="activeSection !== 'about'"
+          [attr.aria-current]="activeSection === 'about' ? 'location' : null"
         >
 
           About
@@ -351,6 +380,7 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'skills'"
           [class.text-[#687386]]="activeSection !== 'skills'"
+          [attr.aria-current]="activeSection === 'skills' ? 'location' : null"
         >
 
           Skills
@@ -374,11 +404,36 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'projects'"
           [class.text-[#687386]]="activeSection !== 'projects'"
+          [attr.aria-current]="activeSection === 'projects' ? 'location' : null"
         >
 
           Projects
 
           @if (activeSection === 'projects') {
+
+            <span
+              class="absolute bottom-1 left-4 h-1 w-5 rounded-full bg-[#f07d36]"
+            ></span>
+
+          }
+
+        </a>
+
+
+        <!-- BLOG -->
+
+        <a
+          href="#blog"
+          (click)="scrollToSection('blog', $event)"
+          class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
+          [class.text-[#f07d36]]="activeSection === 'blog'"
+          [class.text-[#687386]]="activeSection !== 'blog'"
+          [attr.aria-current]="activeSection === 'blog' ? 'location' : null"
+        >
+
+          Blog
+
+          @if (activeSection === 'blog') {
 
             <span
               class="absolute bottom-1 left-4 h-1 w-5 rounded-full bg-[#f07d36]"
@@ -397,6 +452,7 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'services'"
           [class.text-[#687386]]="activeSection !== 'services'"
+          [attr.aria-current]="activeSection === 'services' ? 'location' : null"
         >
 
           Services
@@ -420,6 +476,7 @@
           class="relative rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-300 hover:text-[#f07d36]"
           [class.text-[#f07d36]]="activeSection === 'contact'"
           [class.text-[#687386]]="activeSection !== 'contact'"
+          [attr.aria-current]="activeSection === 'contact' ? 'location' : null"
         >
 
           Contact
@@ -499,7 +556,7 @@
          LEFT SIDE
     ======================================== -->
 
-    <div class="scroll-left relative z-20">
+    <div class="scroll-animate relative z-20">
 
       <!-- Small Badge -->
 
@@ -524,7 +581,7 @@
       <!-- Main Heading -->
 
       <h1
-        class="max-w-3xl text-[3.8rem] font-black leading-[0.98] tracking-[-0.04em] text-[#202938] sm:text-[4.7rem] lg:text-[5.4rem]"
+        class="max-w-3xl text-4xl font-black leading-[1.05] tracking-[-0.04em] text-[#202938] sm:text-6xl lg:text-[5.4rem]"
       >
 
         Hi, I'm
@@ -667,7 +724,7 @@
     ======================================== -->
 
     <div
-      class="scroll-right relative mx-auto flex min-h-[560px] w-full max-w-[720px] items-center justify-center"
+      class="scroll-animate relative mx-auto flex min-h-88 w-full max-w-180 items-center justify-center overflow-hidden sm:min-h-120 lg:min-h-140"
     >
 
       <!-- ========================================
@@ -675,7 +732,7 @@
       ======================================== -->
 
       <div
-        class="hero-orbit-area relative h-[540px] w-[540px] sm:h-[600px] sm:w-[600px]"
+        class="hero-orbit-area relative h-80 w-[20rem] sm:h-120 sm:w-120 lg:h-136 lg:w-136"
       >
 
         <!-- Orange Orbit 1 -->
@@ -697,7 +754,7 @@
         ======================================== -->
 
         <div
-          class="hero-photo-frame absolute left-1/1 top-1/2 z-20 w-[330px] -translate-x-70 -translate-y-1/7 rotate-[-2deg] rounded-[38px] bg-[#edf0f4] p-5 sm:w-[390px]"
+          class="hero-photo-frame z-20 w-65 rounded-[38px] bg-[#edf0f4] p-4 sm:w-82.5 sm:p-5 lg:w-97.5"
           style="
             box-shadow:
               18px 18px 35px #c5c9d0,
@@ -1005,7 +1062,7 @@
 
 <section
   id="skills"
-  class="relative overflow-hidden bg-[#e8ebf0] px-6 py-24 lg:px-10"
+  class="skills-section relative overflow-hidden bg-[#e8ebf0] px-6 py-24 lg:px-10"
 >
   <!-- Background Decorations -->
   <div
@@ -1029,21 +1086,20 @@
           class="h-2 w-2 rounded-full bg-[#f07d36] shadow-[0_0_10px_rgba(240,125,54,0.55)]"
         ></span>
 
-        My Skills
+        Skills & Toolkit
       </div>
 
       <h2
         class="text-4xl font-black tracking-[-0.03em] text-[#202938] sm:text-5xl lg:text-6xl"
       >
-        Technologies I
-        <span class="text-[#f07d36]">Work With</span>
+        The tools behind
+        <span class="text-[#f07d36]">my work.</span>
       </h2>
 
       <p
         class="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#60758f] sm:text-lg"
       >
-        Technologies and tools I use to build modern, responsive,
-        and user-friendly digital experiences.
+        A look at the technologies, creative skills, and workflows I bring to every project.
       </p>
 
     </div>
@@ -1056,8 +1112,7 @@
     <div class="scroll-scale mt-14">
 
       <div
-        class="rounded-[30px] bg-[#e8ebf0] p-6 sm:p-8"
-        style="box-shadow: inset 6px 6px 14px #c9cdd4, inset -6px -6px 14px #ffffff;"
+        class="skills-stack rounded-[30px] border border-white/70 bg-white/45 p-6 backdrop-blur-sm sm:p-8"
       >
 
         <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
@@ -1077,73 +1132,25 @@
           </div>
 
 
-          <div class="flex flex-wrap gap-3">
-
-            <!-- Angular -->
-            <div
-              class="group flex items-center gap-2 rounded-xl bg-[#e8ebf0] px-4 py-3 text-sm font-semibold text-[#526176] transition-all duration-300 hover:-translate-y-1 hover:text-[#f07d36]"
-              style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff;"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
-                class="h-5 w-5"
-                alt="Angular"
-              />
-              Angular
+          <div class="core-stack-marquee min-w-0 flex-1" aria-label="Core technologies, slow-moving list that pauses on hover">
+            <div class="core-stack-track">
+              <div class="core-stack-group" role="list">
+                @for (technology of coreStack; track technology.name) {
+                  <span class="inline-flex shrink-0 items-center gap-2 rounded-2xl border border-white/80 bg-[#e8ebf0] px-4 py-3 text-sm font-bold text-[#526176] shadow-[5px_5px_10px_#c5c9d0,-5px_-5px_10px_#ffffff]" role="listitem">
+                    <img [src]="'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/' + technology.icon + '/' + technology.icon + '-original.svg'" [alt]="technology.name + ' logo'" class="h-7 w-7 shrink-0 object-contain" loading="lazy" decoding="async" (error)="hideBrokenTechIcon($event)">
+                    {{ technology.name }}
+                  </span>
+                }
+              </div>
+              <div class="core-stack-group" role="list" aria-hidden="true">
+                @for (technology of coreStack; track 'copy-' + technology.name) {
+                  <span class="inline-flex shrink-0 items-center gap-2 rounded-2xl border border-white/80 bg-[#e8ebf0] px-4 py-3 text-sm font-bold text-[#526176] shadow-[5px_5px_10px_#c5c9d0,-5px_-5px_10px_#ffffff]" role="listitem">
+                    <img [src]="'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/' + technology.icon + '/' + technology.icon + '-original.svg'" alt="" class="h-7 w-7 shrink-0 object-contain" loading="lazy" decoding="async" (error)="hideBrokenTechIcon($event)">
+                    {{ technology.name }}
+                  </span>
+                }
+              </div>
             </div>
-
-            <!-- Laravel -->
-            <div
-              class="group flex items-center gap-2 rounded-xl bg-[#e8ebf0] px-4 py-3 text-sm font-semibold text-[#526176] transition-all duration-300 hover:-translate-y-1 hover:text-[#f07d36]"
-              style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff;"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
-                class="h-5 w-5"
-                alt="Laravel"
-              />
-              Laravel
-            </div>
-
-            <!-- PHP -->
-            <div
-              class="group flex items-center gap-2 rounded-xl bg-[#e8ebf0] px-4 py-3 text-sm font-semibold text-[#526176] transition-all duration-300 hover:-translate-y-1 hover:text-[#f07d36]"
-              style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff;"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-                class="h-5 w-5"
-                alt="PHP"
-              />
-              PHP
-            </div>
-
-            <!-- MySQL -->
-            <div
-              class="group flex items-center gap-2 rounded-xl bg-[#e8ebf0] px-4 py-3 text-sm font-semibold text-[#526176] transition-all duration-300 hover:-translate-y-1 hover:text-[#f07d36]"
-              style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff;"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                class="h-5 w-5"
-                alt="MySQL"
-              />
-              MySQL
-            </div>
-
-            <!-- Tailwind -->
-            <div
-              class="group flex items-center gap-2 rounded-xl bg-[#e8ebf0] px-4 py-3 text-sm font-semibold text-[#526176] transition-all duration-300 hover:-translate-y-1 hover:text-[#f07d36]"
-              style="box-shadow: 5px 5px 10px #c5c9d0, -5px -5px 10px #ffffff;"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
-                class="h-5 w-5"
-                alt="Tailwind CSS"
-              />
-              Tailwind CSS
-            </div>
-
           </div>
 
         </div>
@@ -1162,8 +1169,7 @@
 
       <!-- FRONTEND -->
       <div
-        class="scroll-stagger scroll-delay-1 group relative overflow-hidden rounded-[30px] bg-[#e8ebf0] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
-        style="box-shadow: 12px 12px 25px #c5c9d0, -12px -12px 25px #ffffff;"
+        class="skill-card cursor-default scroll-stagger scroll-delay-1 group relative overflow-hidden rounded-[30px] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
       >
 
         <!-- Hover Glow -->
@@ -1176,7 +1182,7 @@
           <div class="flex items-start justify-between">
 
             <div
-              class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+              class="skill-icon flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
             >
               <svg lucideGlobe class="h-8 w-8"></svg>
             </div>
@@ -1212,20 +1218,8 @@
           </div>
 
 
-          <!-- Progress -->
-          <div class="mt-8">
-
-            <div class="mb-2 flex justify-between text-xs font-semibold">
-              <span class="text-[#60758f]">Frontend Development</span>
-              <span class="text-[#f07d36]">Currently Learning</span>
-            </div>
-
-            <div class="h-2 overflow-hidden rounded-full bg-[#d8dce2]">
-              <div
-                class="h-full w-[78%] rounded-full bg-[#f07d36]"
-              ></div>
-            </div>
-
+          <div class="skill-card-footer mt-8 flex items-center gap-2 border-t border-[#d6dce4] pt-5 text-xs font-bold uppercase tracking-[0.16em] text-[#7a8797]">
+            <span class="h-2 w-2 rounded-full bg-[#f07d36]"></span> Building with the web
           </div>
 
         </div>
@@ -1235,8 +1229,7 @@
 
       <!-- BACKEND -->
       <div
-        class="scroll-stagger scroll-delay-2 group relative overflow-hidden rounded-[30px] bg-[#e8ebf0] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
-        style="box-shadow: 12px 12px 25px #c5c9d0, -12px -12px 25px #ffffff;"
+        class="skill-card cursor-default scroll-stagger scroll-delay-2 group relative overflow-hidden rounded-[30px] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
       >
 
         <div
@@ -1248,7 +1241,7 @@
           <div class="flex items-start justify-between">
 
             <div
-              class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+              class="skill-icon flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
             >
               <svg lucideDatabase class="h-8 w-8"></svg>
             </div>
@@ -1282,19 +1275,8 @@
           </div>
 
 
-          <div class="mt-8">
-
-            <div class="mb-2 flex justify-between text-xs font-semibold">
-              <span class="text-[#60758f]">Backend Development</span>
-              <span class="text-[#f07d36]">Currently Learning</span>
-            </div>
-
-            <div class="h-2 overflow-hidden rounded-full bg-[#d8dce2]">
-              <div
-                class="h-full w-[72%] rounded-full bg-[#f07d36]"
-              ></div>
-            </div>
-
+          <div class="skill-card-footer mt-8 flex items-center gap-2 border-t border-[#d6dce4] pt-5 text-xs font-bold uppercase tracking-[0.16em] text-[#7a8797]">
+            <span class="h-2 w-2 rounded-full bg-[#f07d36]"></span> Bringing data to life
           </div>
 
         </div>
@@ -1304,8 +1286,7 @@
 
       <!-- DESIGN -->
       <div
-        class="scroll-stagger scroll-delay-3 group relative overflow-hidden rounded-[30px] bg-[#e8ebf0] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
-        style="box-shadow: 12px 12px 25px #c5c9d0, -12px -12px 25px #ffffff;"
+        class="skill-card cursor-default scroll-stagger scroll-delay-3 group relative overflow-hidden rounded-[30px] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
       >
 
         <div
@@ -1317,7 +1298,7 @@
           <div class="flex items-start justify-between">
 
             <div
-              class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+              class="skill-icon flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
             >
               <svg lucidePalette class="h-8 w-8"></svg>
             </div>
@@ -1351,19 +1332,8 @@
           </div>
 
 
-          <div class="mt-8">
-
-            <div class="mb-2 flex justify-between text-xs font-semibold">
-              <span class="text-[#60758f]">Design & Creativity</span>
-              <span class="text-[#f07d36]">Active Skill</span>
-            </div>
-
-            <div class="h-2 overflow-hidden rounded-full bg-[#d8dce2]">
-              <div
-                class="h-full w-[82%] rounded-full bg-[#f07d36]"
-              ></div>
-            </div>
-
+          <div class="skill-card-footer mt-8 flex items-center gap-2 border-t border-[#d6dce4] pt-5 text-xs font-bold uppercase tracking-[0.16em] text-[#7a8797]">
+            <span class="h-2 w-2 rounded-full bg-[#f07d36]"></span> Designing with intention
           </div>
 
         </div>
@@ -1373,8 +1343,7 @@
 
       <!-- TOOLS -->
       <div
-        class="scroll-stagger scroll-delay-4 group relative overflow-hidden rounded-[30px] bg-[#e8ebf0] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
-        style="box-shadow: 12px 12px 25px #c5c9d0, -12px -12px 25px #ffffff;"
+        class="skill-card cursor-default scroll-stagger scroll-delay-4 group relative overflow-hidden rounded-[30px] p-7 transition-all duration-500 hover:-translate-y-2 sm:p-8"
       >
 
         <div
@@ -1386,7 +1355,7 @@
           <div class="flex items-start justify-between">
 
             <div
-              class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+              class="skill-icon flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.28)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
             >
               <svg lucideCode2 class="h-8 w-8"></svg>
             </div>
@@ -1421,19 +1390,8 @@
           </div>
 
 
-          <div class="mt-8">
-
-            <div class="mb-2 flex justify-between text-xs font-semibold">
-              <span class="text-[#60758f]">Tools & Workflow</span>
-              <span class="text-[#f07d36]">Active Skill</span>
-            </div>
-
-            <div class="h-2 overflow-hidden rounded-full bg-[#d8dce2]">
-              <div
-                class="h-full w-[85%] rounded-full bg-[#f07d36]"
-              ></div>
-            </div>
-
+          <div class="skill-card-footer mt-8 flex items-center gap-2 border-t border-[#d6dce4] pt-5 text-xs font-bold uppercase tracking-[0.16em] text-[#7a8797]">
+            <span class="h-2 w-2 rounded-full bg-[#f07d36]"></span> From idea to delivery
           </div>
 
         </div>
@@ -1745,7 +1703,7 @@
            PROJECT 1
       ======================================== -->
       <article
-        class="scroll-stagger scroll-delay-1 group flex h-90 flex-col overflow-hidden rounded-[28px] bg-[#e8ebf0] shadow-[10px_10px_25px_#c8cdd5,-10px_-10px_25px_#ffffff] transition-all duration-300 hover:-translate-y-2 hover:shadow-[14px_14px_30px_#c5cad2,-14px_-14px_30px_#ffffff]"
+        class="scroll-stagger cursor-default scroll-delay-1 group flex h-auto min-h-95 flex-col overflow-hidden rounded-[28px] bg-[#e8ebf0] shadow-[10px_10px_25px_#c8cdd5,-10px_-10px_25px_#ffffff] transition-all duration-300 hover:-translate-y-2 hover:shadow-[14px_14px_30px_#c5cad2,-14px_-14px_30px_#ffffff]"
       >
 
         <!-- Project Image -->
@@ -1759,7 +1717,7 @@
 
           <!-- Image Overlay -->
           <div
-            class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"
+            class="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent opacity-60"
           ></div>
 
           <!-- Project Number -->
@@ -1787,6 +1745,10 @@
             A web-based attendance management system designed to manage
             scholars, batches, programs, and attendance.
           </p>
+
+          <button type="button" class="mt-5 inline-flex w-fit items-center gap-2 text-sm font-bold text-[#f07d36] transition-all hover:gap-3" (click)="openProjectCaseStudy(projectCaseStudies[0])">
+            Explore case study <svg lucideArrowRight class="h-4 w-4"></svg>
+          </button>
 
 
           <!-- Stack -->
@@ -1832,7 +1794,7 @@
            PROJECT 2
       ======================================== -->
       <article
-        class="scroll-stagger scroll-delay-2 group flex h-90 flex-col overflow-hidden rounded-[28px] bg-[#e8ebf0] shadow-[10px_10px_25px_#c8cdd5,-10px_-10px_25px_#ffffff] transition-all duration-300 hover:-translate-y-2 hover:shadow-[14px_14px_30px_#c5cad2,-14px_-14px_30px_#ffffff]"
+        class="scroll-stagger cursor-default scroll-delay-2 group flex h-auto min-h-95 flex-col overflow-hidden rounded-[28px] bg-[#e8ebf0] shadow-[10px_10px_25px_#c8cdd5,-10px_-10px_25px_#ffffff] transition-all duration-300 hover:-translate-y-2 hover:shadow-[14px_14px_30px_#c5cad2,-14px_-14px_30px_#ffffff]"
       >
 
         <!-- Project Image -->
@@ -1845,7 +1807,7 @@
           >
 
           <div
-            class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"
+            class="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent opacity-60"
           ></div>
 
           <span
@@ -1872,6 +1834,10 @@
             A simple library management system with student records,
             book CRUD, search, and database integration.
           </p>
+
+          <button type="button" class="mt-5 inline-flex w-fit items-center gap-2 text-sm font-bold text-[#f07d36] transition-all hover:gap-3" (click)="openProjectCaseStudy(projectCaseStudies[1])">
+            Explore case study <svg lucideArrowRight class="h-4 w-4"></svg>
+          </button>
 
 
           <!-- Stack -->
@@ -1917,7 +1883,7 @@
            PROJECT 3
       ======================================== -->
       <article
-        class="scroll-stagger scroll-delay-3 group flex h-90 flex-col overflow-hidden rounded-[28px] bg-[#e8ebf0] shadow-[10px_10px_25px_#c8cdd5,-10px_-10px_25px_#ffffff] transition-all duration-300 hover:-translate-y-2 hover:shadow-[14px_14px_30px_#c5cad2,-14px_-14px_30px_#ffffff]"
+        class="scroll-stagger cursor-default scroll-delay-3 group flex h-auto min-h-95 flex-col overflow-hidden rounded-[28px] bg-[#e8ebf0] shadow-[10px_10px_25px_#c8cdd5,-10px_-10px_25px_#ffffff] transition-all duration-300 hover:-translate-y-2 hover:shadow-[14px_14px_30px_#c5cad2,-14px_-14px_30px_#ffffff]"
       >
 
         <!-- Project Image -->
@@ -1930,7 +1896,7 @@
           >
 
           <div
-            class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"
+            class="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent opacity-60"
           ></div>
 
           <span
@@ -1957,6 +1923,10 @@
             A modern personal portfolio showcasing my web development,
             visual design skills, and projects.
           </p>
+
+          <button type="button" class="mt-5 inline-flex w-fit items-center gap-2 text-sm font-bold text-[#f07d36] transition-all hover:gap-3" (click)="openProjectCaseStudy(projectCaseStudies[2])">
+            Explore case study <svg lucideArrowRight class="h-4 w-4"></svg>
+          </button>
 
 
           <!-- Stack -->
@@ -1997,6 +1967,103 @@
 
       </article>
 
+      <!-- ========================================
+           PROJECT 4
+      ======================================== -->
+      <article
+        class="scroll-stagger cursor-default scroll-delay-4 group flex h-auto min-h-95 flex-col overflow-hidden rounded-[28px] bg-[#e8ebf0] shadow-[10px_10px_25px_#c8cdd5,-10px_-10px_25px_#ffffff] transition-all duration-300 hover:-translate-y-2 hover:shadow-[14px_14px_30px_#c5cad2,-14px_-14px_30px_#ffffff]"
+      >
+
+        <!-- Project Image -->
+        <div class="relative h-52 overflow-hidden">
+
+          <img
+            src="/images/Sakaytantiya.png"
+            alt="Sakaytantiya Project"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          >
+
+          <div
+            class="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent opacity-60"
+          ></div>
+
+          <span
+            class="absolute left-4 top-4 rounded-full bg-[#e8ebf0]/90 px-3 py-1 text-xs font-bold text-[#f07d36] shadow-md backdrop-blur-sm"
+          >
+            04
+          </span>
+
+        </div>
+
+
+        <!-- Content -->
+        <div class="flex flex-1 flex-col p-7">
+
+          <h3
+            class="text-xl font-extrabold text-[#30343b]"
+          >
+            Sakaytantiya
+          </h3>
+
+          <p
+            class="mt-3 text-sm leading-6 text-[#60758f]"
+          >
+            A web application project designed for transport management and commuting services.
+          </p>
+
+          <button type="button" class="mt-5 inline-flex w-fit items-center gap-2 text-sm font-bold text-[#f07d36] transition-all hover:gap-3" (click)="openProjectCaseStudy(projectCaseStudies[3])">
+            Explore case study <svg lucideArrowRight class="h-4 w-4"></svg>
+          </button>
+
+
+          <!-- Stack -->
+          <div class="mt-6">
+
+            <p
+              class="mb-3 text-xs font-bold uppercase tracking-wider text-[#7b8794]"
+            >
+              Tech Stack
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+
+              <span
+                class="rounded-full bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#30343b] shadow-[inset_2px_2px_5px_#cdd1d8,inset_-2px_-2px_5px_#ffffff]"
+              >
+                Angular
+              </span>
+
+              <span
+                class="rounded-full bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#30343b] shadow-[inset_2px_2px_5px_#cdd1d8,inset_-2px_-2px_5px_#ffffff]"
+              >
+                Laravel
+              </span>
+
+              <span
+                class="rounded-full bg-[#e8ebf0] px-3 py-1.5 text-xs font-semibold text-[#30343b] shadow-[inset_2px_2px_5px_#cdd1d8,inset_-2px_-2px_5px_#ffffff]"
+              >
+                MySQL
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+    <div class="scroll-scale mt-12 flex flex-col items-start justify-between gap-6 rounded-[28px] border border-white/80 bg-[#e8ebf0] p-7 shadow-[10px_10px_20px_#c5c9d0,-10px_-10px_20px_#ffffff] sm:flex-row sm:items-center sm:p-9">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#f07d36]">Have something in mind?</p>
+        <h3 class="mt-2 text-2xl font-extrabold text-[#30343b]">Let’s talk about your project.</h3>
+        <p class="mt-2 max-w-2xl text-sm leading-6 text-[#60758f]">Share your goals and I’ll get back to you about the next steps.</p>
+      </div>
+      <a href="#contact" (click)="startProjectInquiry('a new project', $event)" class="inline-flex shrink-0 items-center gap-2 rounded-2xl bg-[#f07d36] px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#e56f29]">
+        Start an inquiry <svg lucideArrowRight class="h-4 w-4"></svg>
+      </a>
     </div>
 
   </div>
@@ -2005,48 +2072,143 @@
 
 
 
+@if (selectedProjectCaseStudy; as project) {
+  <div class="blog-modal-backdrop fixed inset-0 z-80 grid place-items-center overflow-y-auto p-4 sm:p-8" (click)="closeProjectCaseStudy()">
+    <article class="blog-modal-card relative my-auto w-full max-w-2xl rounded-3xl border border-white/80 bg-linear-to-br from-white via-[#e8ebf0] to-[#f7e3d6] p-7 shadow-2xl sm:p-10" role="dialog" aria-modal="true" [attr.aria-label]="project.title + ' case study'" (click)="$event.stopPropagation()">
+      <button type="button" class="absolute right-5 top-5 grid h-10 w-10 place-items-center rounded-xl bg-[#e8ebf0] text-[#687386] shadow-[4px_4px_9px_#c5c9d0,-4px_-4px_9px_#ffffff] transition hover:text-[#f07d36]" (click)="closeProjectCaseStudy()" aria-label="Close case study">
+        <svg lucideX class="h-5 w-5"></svg>
+      </button>
+      <p class="pr-12 text-xs font-bold uppercase tracking-[0.2em] text-[#f07d36]">Project case study</p>
+      <h2 class="mt-4 pr-8 text-3xl font-extrabold leading-tight text-[#30343b] sm:text-4xl">{{ project.title }}</h2>
+      <p class="mt-5 text-base leading-7 text-[#60758f]">{{ project.overview }}</p>
+      <div class="mt-8">
+        <h3 class="text-sm font-extrabold uppercase tracking-wider text-[#30343b]">Project highlights</h3>
+        <ul class="mt-4 space-y-3">
+          @for (highlight of project.highlights; track highlight) {
+            <li class="flex items-start gap-3 text-sm leading-6 text-[#60758f]"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#f07d36]"></span>{{ highlight }}</li>
+          }
+        </ul>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-sm font-extrabold uppercase tracking-wider text-[#30343b]">Tools used</h3>
+        <div class="mt-3 flex flex-wrap gap-2">
+          @for (tool of project.stack; track tool) {
+            <span class="rounded-full bg-[#e8ebf0] px-3 py-2 text-xs font-bold text-[#526176] shadow-[inset_2px_2px_5px_#cdd1d8,inset_-2px_-2px_5px_#ffffff]">{{ tool }}</span>
+          }
+        </div>
+      </div>
+      <a href="#contact" (click)="startProjectInquiry(project.title, $event)" class="mt-9 inline-flex items-center gap-2 rounded-2xl bg-[#f07d36] px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#e56f29]">
+        Discuss a similar project <svg lucideArrowRight class="h-4 w-4"></svg>
+      </a>
+    </article>
+  </div>
+}
+
+    <!-- ========================================
+         BLOG
+    ========================================= -->
+    <section id="blog" class="scroll-mt-24 bg-[#e1e4e9] px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="scroll-animate mx-auto max-w-2xl text-center">
+          <p class="text-sm font-bold uppercase tracking-[0.2em] text-[#f07d36]">From the Blog</p>
+          <h2 class="mt-3 text-3xl font-extrabold text-[#30343b] sm:text-4xl">Notes from my journey</h2>
+          <p class="mt-4 leading-7 text-[#687386]">
+            Short articles about what I’m learning in web development, design, and building projects.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          @for (post of blogPosts; track post.title; let i = $index) {
+            <article class="scroll-stagger group flex flex-col overflow-hidden rounded-3xl bg-[#e8ebf0] shadow-[9px_9px_18px_#c5c9d0,-9px_-9px_18px_#ffffff] transition duration-300 hover:-translate-y-1">
+              @if (post.image) {
+                <div class="relative h-48 overflow-hidden" [class.h-64]="post.category === 'Web Development'">
+                  <img [src]="post.image" [alt]="post.imageAlt" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" [class.blog-image-focus]="post.category === 'Web Development'">
+                  <div class="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent"></div>
+                  <span class="absolute bottom-5 left-6 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#f07d36] backdrop-blur-sm">{{ post.category }}</span>
+                </div>
+              } @else {
+                <div class="blog-art {{ post.accent }} relative flex h-48 items-end overflow-hidden p-6">
+                  <span class="relative z-10 rounded-full bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#f07d36] backdrop-blur-sm">{{ post.category }}</span>
+                  <span class="blog-art-orbit" aria-hidden="true"></span>
+                  <span class="blog-art-shape" aria-hidden="true">{{ i + 1 }}</span>
+                </div>
+              }
+              <div class="flex flex-1 flex-col p-7">
+                <div class="flex items-center gap-2 text-xs font-semibold text-[#8792a0]">
+                  <span>{{ post.date }}</span><span aria-hidden="true">·</span><span>{{ post.readTime }}</span>
+                </div>
+                <h3 class="mt-4 text-xl font-extrabold leading-snug text-[#30343b]">{{ post.title }}</h3>
+                <p class="mt-3 flex-1 text-sm leading-6 text-[#60758f]">{{ post.excerpt }}</p>
+                <button type="button" class="mt-6 cursor-pointer inline-flex w-fit items-center gap-2 text-sm font-bold text-[#f07d36] transition hover:gap-3" (click)="openBlogPost(post)" [attr.aria-label]="'Read article: ' + post.title">
+                  Read article <svg lucideArrowRight class="h-4 w-4"></svg>
+                </button>
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+    </section>
+
+    @if (selectedBlogPost; as post) {
+      <div class="blog-modal-backdrop fixed inset-0 z-70 grid place-items-center overflow-y-auto p-4 sm:p-8" (click)="closeBlogPost()">
+        <article class="blog-modal-card relative my-auto w-full max-w-2xl rounded-3xl bg-[#e8ebf0] p-7 shadow-2xl sm:p-10" role="dialog" aria-modal="true" [attr.aria-label]="post.title" (click)="$event.stopPropagation()">
+          <button type="button" class="absolute right-5 top-5 grid h-10 w-10 place-items-center rounded-xl bg-[#e8ebf0] text-[#687386] shadow-[4px_4px_9px_#c5c9d0,-4px_-4px_9px_#ffffff] transition hover:text-[#f07d36]" (click)="closeBlogPost()" aria-label="Close article">
+            <svg lucideX class="h-5 w-5"></svg>
+          </button>
+          <p class="pr-12 text-xs font-bold uppercase tracking-[0.2em] text-[#f07d36]">{{ post.category }} <span class="px-1 text-[#a0a8b3]">·</span> {{ post.readTime }}</p>
+          <h2 class="mt-5 pr-8 text-3xl font-extrabold leading-tight text-[#30343b] sm:text-4xl">{{ post.title }}</h2>
+          <div class="my-7 h-1 w-16 rounded-full bg-[#f07d36]"></div>
+          <div class="space-y-5 text-base leading-8 text-[#60758f]">
+            @for (paragraph of post.body; track paragraph) { <p>{{ paragraph }}</p> }
+          </div>
+        </article>
+      </div>
+    }
+
+
     <!-- ========================================
          SERVICES
     ========================================= -->
     <section
       id="services"
-      class="bg-[#e1e4e9] px-4 py-20 sm:px-6 lg:px-8"
+      class="services-section relative overflow-hidden bg-[#e1e4e9] px-4 py-24 sm:px-6 lg:px-8"
     >
+
+      <div class="pointer-events-none absolute -right-28 top-12 h-80 w-80 rounded-full bg-[#f07d36]/10 blur-[110px]"></div>
 
       <div class="mx-auto max-w-7xl">
 
         <div class="scroll-animate mx-auto max-w-2xl text-center">
 
-          <p
-            class="text-sm font-bold uppercase tracking-[0.2em] text-[#f07d36]"
-          >
-            Services
+          <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/55 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#f07d36] shadow-sm">
+            <span class="h-2 w-2 rounded-full bg-[#f07d36]"></span> What I Offer
           </p>
 
           <h2
             class="mt-3 text-3xl font-extrabold text-[#1f2937] sm:text-4xl"
           >
-            What I Can Do
+            Thoughtful work, from idea to launch.
           </h2>
 
           <p class="mt-4 leading-7 text-[#687386]">
-            Services focused on web development, design, and backend systems.
+            I bring design and development together to create useful, polished digital experiences.
           </p>
 
         </div>
 
 
-        <div class="mt-12 grid gap-8 md:grid-cols-3">
+        <div class="relative mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
 
           <!-- Service 1 -->
           <div
-            class="scroll-left rounded-3xl bg-[#e8ebf0] p-8"
-            style="box-shadow: 9px 9px 18px #c5c9d0, -9px -9px 18px #ffffff;"
+            class="service-card cursor-pointer scroll-left group relative flex h-full flex-col overflow-hidden rounded-[28px] p-7 sm:p-8"
           >
 
+            <span class="service-number">01 <span> / BUILD</span></span>
+
             <div
-              class="grid h-14 w-14 place-items-center rounded-2xl bg-[#f07d36] text-white"
+              class="service-icon grid h-14 w-14 place-items-center rounded-2xl bg-[#f07d36] text-white transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105"
             >
               <svg lucideCode2 class="h-6 w-6"></svg>
             </div>
@@ -2060,17 +2222,28 @@
               modern frontend and backend technologies.
             </p>
 
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="service-tag">Responsive UI</span>
+              <span class="service-tag">Web apps</span>
+              <span class="service-tag">Frontend & backend</span>
+            </div>
+
+            <a href="#contact" (click)="startServiceInquiry('Web Development', $event)" class="service-link mt-auto inline-flex items-center gap-2 pt-8 text-sm font-bold text-[#f07d36]">
+              Discuss this service <svg lucideArrowRight class="h-4 w-4"></svg>
+            </a>
+
           </div>
 
 
           <!-- Service 2 -->
           <div
-            class="scroll-animate rounded-3xl bg-[#e8ebf0] p-8"
-            style="box-shadow: 9px 9px 18px #c5c9d0, -9px -9px 18px #ffffff;"
+            class="service-card cursor-pointer scroll-animate group relative flex h-full flex-col overflow-hidden rounded-[28px] p-7 sm:p-8"
           >
 
+            <span class="service-number">02 <span> / DESIGN</span></span>
+
             <div
-              class="grid h-14 w-14 place-items-center rounded-2xl bg-[#f07d36] text-white"
+              class="service-icon grid h-14 w-14 place-items-center rounded-2xl bg-[#f07d36] text-white transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105"
             >
               <svg lucidePalette class="h-6 w-6"></svg>
             </div>
@@ -2084,17 +2257,28 @@
               visual hierarchy, and responsive layouts.
             </p>
 
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="service-tag">UI design</span>
+              <span class="service-tag">Visual design</span>
+              <span class="service-tag">Responsive layouts</span>
+            </div>
+
+            <a href="#contact" (click)="startServiceInquiry('UI and Visual Design', $event)" class="service-link mt-auto inline-flex items-center gap-2 pt-8 text-sm font-bold text-[#f07d36]">
+              Discuss this service <svg lucideArrowRight class="h-4 w-4"></svg>
+            </a>
+
           </div>
 
 
           <!-- Service 3 -->
           <div
-            class="scroll-right rounded-3xl bg-[#e8ebf0] p-8"
-            style="box-shadow: 9px 9px 18px #c5c9d0, -9px -9px 18px #ffffff;"
+            class="service-card cursor-pointer scroll-right group relative flex h-full flex-col overflow-hidden rounded-[28px] p-7 sm:p-8"
           >
 
+            <span class="service-number">03 <span> / SYSTEMS</span></span>
+
             <div
-              class="grid h-14 w-14 place-items-center rounded-2xl bg-[#f07d36] text-white"
+              class="service-icon grid h-14 w-14 place-items-center rounded-2xl bg-[#f07d36] text-white transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105"
             >
               <svg lucideDatabase class="h-6 w-6"></svg>
             </div>
@@ -2107,6 +2291,16 @@
               Backend logic, APIs, database structures, and
               CRUD functionality for web applications.
             </p>
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="service-tag">APIs</span>
+              <span class="service-tag">Database design</span>
+              <span class="service-tag">CRUD systems</span>
+            </div>
+
+            <a href="#contact" (click)="startServiceInquiry('Backend and Database', $event)" class="service-link mt-auto inline-flex items-center gap-2 pt-8 text-sm font-bold text-[#f07d36]">
+              Discuss this service <svg lucideArrowRight class="h-4 w-4"></svg>
+            </a>
 
           </div>
 
@@ -2123,7 +2317,7 @@
     <section class="px-4 py-20 sm:px-6 lg:px-8">
 
       <div
-        class="scroll-scale mx-auto max-w-7xl rounded-[2rem] bg-[#e8ebf0] px-6 py-14 text-center sm:px-10"
+        class="scroll-scale mx-auto max-w-7xl rounded-4xl bg-[#e8ebf0] px-6 py-14 text-center sm:px-10"
         style="box-shadow: 10px 10px 20px #c5c9d0, -10px -10px 20px #ffffff;"
       >
 
@@ -2220,13 +2414,13 @@
                   <svg lucideMail class="h-5 w-5"></svg>
                 </div>
 
-                <div>
+          <div>
                   <p class="text-xs text-[#858c96]">
                     Email
                   </p>
 
                   <p class="font-semibold text-[#374151]">
-                    your@email.com
+                    jessiegamulo1023@gmail.com
                   </p>
                 </div>
 
@@ -2248,7 +2442,7 @@
                   </p>
 
                   <p class="font-semibold text-[#374151]">
-                    +63 900 000 0000
+                    09507337934
                   </p>
                 </div>
 
@@ -2270,7 +2464,7 @@
                   </p>
 
                   <p class="font-semibold text-[#374151]">
-                    Philippines
+                    Prk. Ilocandia, Mankilam, Tagum City, Philippines
                   </p>
                 </div>
 
@@ -2288,7 +2482,14 @@
             style="box-shadow: 9px 9px 18px #c5c9d0, -9px -9px 18px #ffffff;"
           >
 
-            <form class="space-y-5">
+            <form
+              (submit)="submitContactForm($event)"
+              class="space-y-5"
+            >
+              <!-- FormSubmit Configuration -->
+              <input type="hidden" name="_subject" value="New Message - Jessie-Portfolio">
+              <input type="hidden" name="_sender" value="Jessie-Portfolio">
+              <input type="hidden" name="_captcha" value="false">
 
               <div>
 
@@ -2301,8 +2502,10 @@
 
                 <input
                   id="name"
+                  name="name"
                   type="text"
                   placeholder="Your name"
+                  required
                   class="w-full rounded-2xl border-0 bg-[#e8ebf0] px-5 py-3.5 text-sm text-[#374151] outline-none placeholder:text-[#9aa1ac]"
                   style="box-shadow: inset 5px 5px 10px #c5c9d0, inset -5px -5px 10px #ffffff;"
                 />
@@ -2321,8 +2524,10 @@
 
                 <input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="your@email.com"
+                  required
                   class="w-full rounded-2xl border-0 bg-[#e8ebf0] px-5 py-3.5 text-sm text-[#374151] outline-none placeholder:text-[#9aa1ac]"
                   style="box-shadow: inset 5px 5px 10px #c5c9d0, inset -5px -5px 10px #ffffff;"
                 />
@@ -2341,8 +2546,12 @@
 
                 <textarea
                   id="message"
+                  name="message"
                   rows="5"
-                  placeholder="Write your message..."
+                  [value]="inquiryMessage"
+                  (input)="updateInquiryMessage($event)"
+                  placeholder="What are you hoping to build? Share your goals, timeline, or budget if you know it."
+                  required
                   class="w-full resize-none rounded-2xl border-0 bg-[#e8ebf0] px-5 py-3.5 text-sm text-[#374151] outline-none placeholder:text-[#9aa1ac]"
                   style="box-shadow: inset 5px 5px 10px #c5c9d0, inset -5px -5px 10px #ffffff;"
                 ></textarea>
@@ -2351,15 +2560,52 @@
 
 
               <button
-                type="button"
-                class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#f07d36] px-6 py-3.5 text-sm font-bold text-white transition duration-300 hover:-translate-y-1 hover:bg-[#e56f29]"
+                type="submit"
+                [disabled]="isSubmitting"
+                class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#f07d36] px-6 py-3.5 text-sm font-bold text-white transition duration-300 hover:-translate-y-1 hover:bg-[#e56f29] disabled:opacity-70 disabled:cursor-not-allowed"
                 style="box-shadow: 7px 7px 14px #c5c9d0, -5px -5px 10px #ffffff;"
               >
-                Send Message
-                <svg lucideSend class="h-4 w-4"></svg>
+                @if (isSubmitting) {
+                  <span>Sending...</span>
+                } @else {
+                  <span>Send Message</span>
+                  <svg lucideSend class="h-4 w-4"></svg>
+                }
               </button>
 
             </form>
+
+            <!-- SUCCESS MODAL -->
+            @if (showSuccessModal) {
+              <div class="fixed inset-0 z-100000 flex items-center justify-center p-4 bg-black/40 backdrop-blur-md animate-fade-up">
+                <div
+                  class="relative w-full max-w-md rounded-3xl bg-[#e8ebf0] p-8 text-center"
+                  style="box-shadow: 14px 14px 30px #c5c9d0, -14px -14px 30px #ffffff;"
+                >
+                  <div
+                    class="mx-auto mb-6 grid h-16 w-16 place-items-center rounded-2xl bg-[#f07d36] text-white shadow-[0_10px_25px_rgba(240,125,54,0.35)]"
+                  >
+                    <svg lucideCheckCircle2 class="h-8 w-8"></svg>
+                  </div>
+
+                  <h3 class="text-2xl font-black text-[#202938]">
+                    Message Sent!
+                  </h3>
+
+                  <p class="mt-3 text-sm leading-6 text-[#60758f]">
+                    Thank you for reaching out! Your message has been sent successfully. I'll get back to you soon.
+                  </p>
+
+                  <button
+                    type="button"
+                    (click)="closeSuccessModal()"
+                    class="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-[#f07d36] px-6 py-3.5 text-sm font-bold text-white shadow-[7px_7px_14px_#c5c9d0,-5px_-5px_10px_#ffffff] transition duration-300 hover:bg-[#e56f29]"
+                  >
+                    Got it!
+                  </button>
+                </div>
+              </div>
+            }
 
           </div>
 
