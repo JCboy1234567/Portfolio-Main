@@ -89,6 +89,8 @@ export class Home implements AfterViewInit, OnDestroy {
 
   darkMode = false;
 
+  githubChartUnavailable = false;
+
   activeSection = 'home';
 
   mouseX = -300;
@@ -228,6 +230,10 @@ export class Home implements AfterViewInit, OnDestroy {
     this.applyTheme();
   }
 
+  markGithubChartUnavailable(): void {
+    this.githubChartUnavailable = true;
+  }
+
 
   /* ========================================
      SMOOTH SCROLL
@@ -319,6 +325,8 @@ export class Home implements AfterViewInit, OnDestroy {
     requestAnimationFrame(() => {
 
       this.setupScrollAnimations();
+
+      this.setupCertificationAnimations();
 
       this.setupActiveSection();
 
@@ -466,6 +474,34 @@ export class Home implements AfterViewInit, OnDestroy {
   );
 
 }
+
+  private setupCertificationAnimations(): void {
+    const host = this.elementRef.nativeElement as HTMLElement;
+    const stages = host.querySelectorAll<HTMLElement>(
+      '.certification-stage'
+    );
+
+    if (!stages.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      stages.forEach((stage) => stage.classList.add('is-active'));
+      return;
+    }
+
+    this.animationObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.25,
+      rootMargin: '-5% 0px -5% 0px'
+    });
+
+    stages.forEach((stage) => this.animationObserver?.observe(stage));
+  }
 
 
   /* ========================================

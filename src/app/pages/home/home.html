@@ -1450,7 +1450,7 @@
 ======================================== -->
 <section
   id="certifications"
-  class="scroll-animate bg-[#e8ebf0] px-6 py-24 lg:px-10"
+  class="bg-[#e8ebf0] px-6 pb-0 pt-20 lg:px-10"
 >
   <div class="mx-auto max-w-6xl">
 
@@ -1482,12 +1482,12 @@
          CERTIFICATE 1
     ========================== -->
     <div
-      class="scroll-left mb-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+      class="certification-stage certification-stage-1"
     >
 
       <!-- Certificate Image -->
       <div
-        class="overflow-hidden rounded-[28px] p-4"
+        class="certification-image overflow-hidden rounded-[28px] p-3 sm:p-4"
         style="
           box-shadow:
             14px 14px 28px #c5c9d0,
@@ -1500,13 +1500,13 @@
           <img
             src="/images/EPAS-NCII.png"
             alt="Electronic Products Assembly and Servicing NC II Certificate"
-            class="h-auto w-full object-cover transition duration-500 hover:scale-[1.02]"
+            class="certification-image-photo h-auto w-full object-cover"
           />
         </div>
       </div>
 
       <!-- Description -->
-      <div class="scroll-right">
+      <div class="certification-copy">
         <span
           class="inline-flex rounded-full bg-[#f07d36]/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#f07d36]"
         >
@@ -1532,11 +1532,11 @@
          CERTIFICATE 2
     ========================== -->
     <div
-      class="scroll-right mb-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+      class="certification-stage certification-stage-2"
     >
 
       <!-- Description -->
-      <div class="order-2 lg:order-1">
+      <div class="certification-copy order-2 lg:order-1">
         <span
           class="inline-flex rounded-full bg-[#f07d36]/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#f07d36]"
         >
@@ -1558,7 +1558,7 @@
 
       <!-- Certificate Image -->
       <div
-        class="order-1 overflow-hidden rounded-[28px] p-4 lg:order-2"
+        class="certification-image order-1 overflow-hidden rounded-[28px] p-3 sm:p-4 lg:order-2"
         style="
           box-shadow:
             14px 14px 28px #c5c9d0,
@@ -1580,12 +1580,12 @@
          CERTIFICATE 3
     ========================== -->
     <div
-      class="scroll-left mb-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+      class="certification-stage certification-stage-3"
     >
 
       <!-- Certificate Image -->
       <div
-        class="overflow-hidden rounded-[28px] p-4"
+        class="certification-image overflow-hidden rounded-[28px] p-3 sm:p-4"
         style="
           box-shadow:
             14px 14px 28px #c5c9d0,
@@ -1602,7 +1602,7 @@
       </div>
 
       <!-- Description -->
-      <div class="scroll-right">
+      <div class="certification-copy">
         <span
           class="inline-flex rounded-full bg-[#f07d36]/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#f07d36]"
         >
@@ -1628,11 +1628,11 @@
          CERTIFICATE 4
     ========================== -->
     <div
-      class="scroll-right grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+      class="certification-stage certification-stage-4"
     >
 
       <!-- Description -->
-      <div class="order-2 lg:order-1">
+      <div class="certification-copy order-2 lg:order-1">
         <span
           class="inline-flex rounded-full bg-[#f07d36]/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#f07d36]"
         >
@@ -1654,7 +1654,7 @@
 
       <!-- Certificate Image -->
       <div
-        class="order-1 overflow-hidden rounded-[28px] p-4 lg:order-2"
+        class="certification-image order-1 overflow-hidden rounded-[28px] p-3 sm:p-4 lg:order-2"
         style="
           box-shadow:
             14px 14px 28px #c5c9d0,
@@ -2068,6 +2068,34 @@
 
       </article>
 
+    </div>
+
+    <div id="github-activity" class="scroll-scale mt-14 rounded-[28px] border border-white/80 bg-white/45 p-6 shadow-[10px_10px_20px_#c5c9d0,-10px_-10px_20px_#ffffff] backdrop-blur-sm sm:p-9">
+      <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#f07d36]">Live on GitHub</p>
+          <h3 class="mt-2 text-2xl font-extrabold text-[#30343b] sm:text-3xl">My Contribution Activity</h3>
+          <p class="mt-2 text-sm leading-6 text-[#60758f]">A live look at my public coding contributions over the past year.</p>
+        </div>
+        <a href="https://github.com/JCboy1234567" target="_blank" rel="noopener noreferrer" class="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-[#f07d36] transition hover:gap-3">
+          View GitHub profile <svg lucideExternalLink class="h-4 w-4"></svg>
+        </a>
+      </div>
+
+      <div class="mt-8 overflow-hidden rounded-2xl border border-white/60 bg-white/70 p-4 sm:p-6">
+        @if (!githubChartUnavailable) {
+          <img
+            src="https://ghchart.rshah.org/JCboy1234567"
+            alt="GitHub contribution chart for JCboy1234567 over the past year"
+            class="block h-auto w-full"
+            loading="lazy"
+            decoding="async"
+            (error)="markGithubChartUnavailable()"
+          >
+        } @else {
+          <p class="py-4 text-center text-sm text-[#60758f]">The contribution graph is unavailable right now. You can still view my activity on <a href="https://github.com/JCboy1234567" target="_blank" rel="noopener noreferrer" class="font-bold text-[#f07d36] underline">GitHub</a>.</p>
+        }
+      </div>
     </div>
 
     <div class="scroll-scale mt-12 flex flex-col items-start justify-between gap-6 rounded-[28px] border border-white/80 bg-[#e8ebf0] p-7 shadow-[10px_10px_20px_#c5c9d0,-10px_-10px_20px_#ffffff] sm:flex-row sm:items-center sm:p-9">
